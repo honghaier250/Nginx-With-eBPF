@@ -1,0 +1,21 @@
+[package]
+name = "nginx_with_ebpf"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+aya = { version = ">=0.11", features=["async_tokio"] }
+aya-log = "0.1"
+clap = { version = "4.1", features = ["derive"] }
+nginx_with_ebpf-common = { path = "../nginx_with_ebpf-common", features = ["user"] }
+anyhow = "1"
+env_logger = "0.10"
+libc = "0.2"
+log = "0.4"
+tokio = { version = "1.25", features = ["macros", "rt", "rt-multi-thread", "net", "signal"] }
+blazesym = "=0.2.0-alpha.1"
+
+[[bin]]
+name = "nginx_with_ebpf"
+path = "src/main.rs"
