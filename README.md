@@ -7,6 +7,15 @@
 rustup install stable
 rustup toolchain install nightly --component rust-src
 cargo install bpf-linker
+
+# 生成bindings.rs
+git clone https://github.com/nginxinc/ngx-rust.git
+cd ngx-rust
+cargo build --release
+find . -name "bindings.rs"
+
+# 拷贝bindings.rs
+cp xxx/bindings.rs nginx-with-ebpf/nginx_with_ebpf-ebpf/src/bindings.rs
 ```
 
 ## 构建
@@ -43,3 +52,5 @@ RUST_LOG=info cargo xtask run -- --pid $(pgrep -f "nginx: worker") --uprobe ngx_
 
 ## 拓展
 - [Aya is an eBPF library for the Rust](https://github.com/aya-rs/aya)
+- [Grafana Beyla](https://github.com/grafana/beyla)
+- [BPF driven auto-tuning](https://github.com/oracle/bpftune)
