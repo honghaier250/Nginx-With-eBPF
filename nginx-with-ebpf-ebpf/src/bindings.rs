@@ -686,30 +686,30 @@ pub const NGX_HTTP_SSI_URL_ENCODING: u32 = 1;
 pub const NGX_HTTP_SSI_ENTITY_ENCODING: u32 = 2;
 pub const NGX_HTTP_LAST: u32 = 1;
 pub const NGX_HTTP_FLUSH: u32 = 2;
-pub type __u_char = ::aya_bpf::cty::c_uchar;
-pub type __u_short = ::aya_bpf::cty::c_ushort;
-pub type __uint8_t = ::aya_bpf::cty::c_uchar;
-pub type __uint16_t = ::aya_bpf::cty::c_ushort;
-pub type __uint32_t = ::aya_bpf::cty::c_uint;
-pub type __uint64_t = ::aya_bpf::cty::c_ulong;
-pub type __dev_t = ::aya_bpf::cty::c_ulong;
-pub type __uid_t = ::aya_bpf::cty::c_uint;
-pub type __gid_t = ::aya_bpf::cty::c_uint;
-pub type __ino_t = ::aya_bpf::cty::c_ulong;
-pub type __ino64_t = ::aya_bpf::cty::c_ulong;
-pub type __mode_t = ::aya_bpf::cty::c_uint;
-pub type __nlink_t = ::aya_bpf::cty::c_ulong;
-pub type __off_t = ::aya_bpf::cty::c_long;
-pub type __off64_t = ::aya_bpf::cty::c_long;
-pub type __pid_t = ::aya_bpf::cty::c_int;
-pub type __time_t = ::aya_bpf::cty::c_long;
-pub type __blksize_t = ::aya_bpf::cty::c_long;
-pub type __blkcnt_t = ::aya_bpf::cty::c_long;
-pub type __ssize_t = ::aya_bpf::cty::c_long;
-pub type __syscall_slong_t = ::aya_bpf::cty::c_long;
-pub type __intptr_t = ::aya_bpf::cty::c_long;
-pub type __socklen_t = ::aya_bpf::cty::c_uint;
-pub type __sig_atomic_t = ::aya_bpf::cty::c_int;
+pub type __u_char = ::aya_ebpf::cty::c_uchar;
+pub type __u_short = ::aya_ebpf::cty::c_ushort;
+pub type __uint8_t = ::aya_ebpf::cty::c_uchar;
+pub type __uint16_t = ::aya_ebpf::cty::c_ushort;
+pub type __uint32_t = ::aya_ebpf::cty::c_uint;
+pub type __uint64_t = ::aya_ebpf::cty::c_ulong;
+pub type __dev_t = ::aya_ebpf::cty::c_ulong;
+pub type __uid_t = ::aya_ebpf::cty::c_uint;
+pub type __gid_t = ::aya_ebpf::cty::c_uint;
+pub type __ino_t = ::aya_ebpf::cty::c_ulong;
+pub type __ino64_t = ::aya_ebpf::cty::c_ulong;
+pub type __mode_t = ::aya_ebpf::cty::c_uint;
+pub type __nlink_t = ::aya_ebpf::cty::c_ulong;
+pub type __off_t = ::aya_ebpf::cty::c_long;
+pub type __off64_t = ::aya_ebpf::cty::c_long;
+pub type __pid_t = ::aya_ebpf::cty::c_int;
+pub type __time_t = ::aya_ebpf::cty::c_long;
+pub type __blksize_t = ::aya_ebpf::cty::c_long;
+pub type __blkcnt_t = ::aya_ebpf::cty::c_long;
+pub type __ssize_t = ::aya_ebpf::cty::c_long;
+pub type __syscall_slong_t = ::aya_ebpf::cty::c_long;
+pub type __intptr_t = ::aya_ebpf::cty::c_long;
+pub type __socklen_t = ::aya_ebpf::cty::c_uint;
+pub type __sig_atomic_t = ::aya_ebpf::cty::c_int;
 pub type u_char = __u_char;
 pub type u_short = __u_short;
 pub type ino_t = __ino64_t;
@@ -719,7 +719,7 @@ pub type off_t = __off64_t;
 pub type pid_t = __pid_t;
 pub type ssize_t = __ssize_t;
 pub type time_t = __time_t;
-pub type size_t = ::aya_bpf::cty::c_ulong;
+pub type size_t = ::aya_ebpf::cty::c_ulong;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct timespec {
@@ -734,9 +734,9 @@ pub type sig_atomic_t = __sig_atomic_t;
 pub struct dirent {
     pub d_ino: __ino64_t,
     pub d_off: __off64_t,
-    pub d_reclen: ::aya_bpf::cty::c_ushort,
-    pub d_type: ::aya_bpf::cty::c_uchar,
-    pub d_name: [::aya_bpf::cty::c_char; 256usize],
+    pub d_reclen: ::aya_ebpf::cty::c_ushort,
+    pub d_type: ::aya_ebpf::cty::c_uchar,
+    pub d_name: [::aya_ebpf::cty::c_char; 256usize],
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -744,38 +744,38 @@ pub struct __dirstream {
     _unused: [u8; 0],
 }
 pub type DIR = __dirstream;
-pub type __size_t = ::aya_bpf::cty::c_ulong;
+pub type __size_t = ::aya_ebpf::cty::c_ulong;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct glob_t {
     pub gl_pathc: __size_t,
-    pub gl_pathv: *mut *mut ::aya_bpf::cty::c_char,
+    pub gl_pathv: *mut *mut ::aya_ebpf::cty::c_char,
     pub gl_offs: __size_t,
-    pub gl_flags: ::aya_bpf::cty::c_int,
-    pub gl_closedir: ::core::option::Option<unsafe extern "C" fn(arg1: *mut ::aya_bpf::cty::c_void)>,
+    pub gl_flags: ::aya_ebpf::cty::c_int,
+    pub gl_closedir: ::core::option::Option<unsafe extern "C" fn(arg1: *mut ::aya_ebpf::cty::c_void)>,
     pub gl_readdir: ::core::option::Option<
-        unsafe extern "C" fn(arg1: *mut ::aya_bpf::cty::c_void) -> *mut dirent,
+        unsafe extern "C" fn(arg1: *mut ::aya_ebpf::cty::c_void) -> *mut dirent,
     >,
     pub gl_opendir: ::core::option::Option<
-        unsafe extern "C" fn(arg1: *const ::aya_bpf::cty::c_char) -> *mut ::aya_bpf::cty::c_void,
+        unsafe extern "C" fn(arg1: *const ::aya_ebpf::cty::c_char) -> *mut ::aya_ebpf::cty::c_void,
     >,
     pub gl_lstat: ::core::option::Option<
         unsafe extern "C" fn(
-            arg1: *const ::aya_bpf::cty::c_char,
+            arg1: *const ::aya_ebpf::cty::c_char,
             arg2: *mut stat,
-        ) -> ::aya_bpf::cty::c_int,
+        ) -> ::aya_ebpf::cty::c_int,
     >,
     pub gl_stat: ::core::option::Option<
         unsafe extern "C" fn(
-            arg1: *const ::aya_bpf::cty::c_char,
+            arg1: *const ::aya_ebpf::cty::c_char,
             arg2: *mut stat,
-        ) -> ::aya_bpf::cty::c_int,
+        ) -> ::aya_ebpf::cty::c_int,
     >,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct iovec {
-    pub iov_base: *mut ::aya_bpf::cty::c_void,
+    pub iov_base: *mut ::aya_ebpf::cty::c_void,
     pub iov_len: size_t,
 }
 #[repr(C)]
@@ -787,7 +787,7 @@ pub struct stat {
     pub st_mode: __mode_t,
     pub st_uid: __uid_t,
     pub st_gid: __gid_t,
-    pub __pad0: ::aya_bpf::cty::c_int,
+    pub __pad0: ::aya_ebpf::cty::c_int,
     pub st_rdev: __dev_t,
     pub st_size: __off_t,
     pub st_blksize: __blksize_t,
@@ -797,18 +797,18 @@ pub struct stat {
     pub st_ctim: timespec,
     pub __glibc_reserved: [__syscall_slong_t; 3usize],
 }
-pub type __cpu_mask = ::aya_bpf::cty::c_ulong;
+pub type __cpu_mask = ::aya_ebpf::cty::c_ulong;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct cpu_set_t {
     pub __bits: [__cpu_mask; 16usize],
 }
-pub type sa_family_t = ::aya_bpf::cty::c_ushort;
+pub type sa_family_t = ::aya_ebpf::cty::c_ushort;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct sockaddr {
     pub sa_family: sa_family_t,
-    pub sa_data: [::aya_bpf::cty::c_char; 14usize],
+    pub sa_data: [::aya_ebpf::cty::c_char; 14usize],
 }
 pub type in_addr_t = u32;
 #[repr(C)]
@@ -835,7 +835,7 @@ pub struct sockaddr_in {
     pub sin_family: sa_family_t,
     pub sin_port: in_port_t,
     pub sin_addr: in_addr,
-    pub sin_zero: [::aya_bpf::cty::c_uchar; 8usize],
+    pub sin_zero: [::aya_ebpf::cty::c_uchar; 8usize],
 }
 #[repr(C)]
 #[derive(Copy, Clone)]
@@ -850,28 +850,28 @@ pub struct sockaddr_in6 {
 #[derive(Copy, Clone)]
 pub struct sockaddr_un {
     pub sun_family: sa_family_t,
-    pub sun_path: [::aya_bpf::cty::c_char; 108usize],
+    pub sun_path: [::aya_ebpf::cty::c_char; 108usize],
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct tm {
-    pub tm_sec: ::aya_bpf::cty::c_int,
-    pub tm_min: ::aya_bpf::cty::c_int,
-    pub tm_hour: ::aya_bpf::cty::c_int,
-    pub tm_mday: ::aya_bpf::cty::c_int,
-    pub tm_mon: ::aya_bpf::cty::c_int,
-    pub tm_year: ::aya_bpf::cty::c_int,
-    pub tm_wday: ::aya_bpf::cty::c_int,
-    pub tm_yday: ::aya_bpf::cty::c_int,
-    pub tm_isdst: ::aya_bpf::cty::c_int,
-    pub tm_gmtoff: ::aya_bpf::cty::c_long,
-    pub tm_zone: *const ::aya_bpf::cty::c_char,
+    pub tm_sec: ::aya_ebpf::cty::c_int,
+    pub tm_min: ::aya_ebpf::cty::c_int,
+    pub tm_hour: ::aya_ebpf::cty::c_int,
+    pub tm_mday: ::aya_ebpf::cty::c_int,
+    pub tm_mon: ::aya_ebpf::cty::c_int,
+    pub tm_year: ::aya_ebpf::cty::c_int,
+    pub tm_wday: ::aya_ebpf::cty::c_int,
+    pub tm_yday: ::aya_ebpf::cty::c_int,
+    pub tm_isdst: ::aya_ebpf::cty::c_int,
+    pub tm_gmtoff: ::aya_ebpf::cty::c_long,
+    pub tm_zone: *const ::aya_ebpf::cty::c_char,
 }
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union sem_t {
-    pub __size: [::aya_bpf::cty::c_char; 32usize],
-    pub __align: ::aya_bpf::cty::c_long,
+    pub __size: [::aya_ebpf::cty::c_char; 32usize],
+    pub __align: ::aya_ebpf::cty::c_long,
 }
 pub type ngx_int_t = isize;
 pub type ngx_uint_t = usize;
@@ -914,15 +914,15 @@ pub type ngx_ssl_connection_t = ngx_ssl_connection_s;
 pub type ngx_event_handler_pt = ::core::option::Option<unsafe extern "C" fn(ev: *mut ngx_event_t)>;
 pub type ngx_connection_handler_pt =
     ::core::option::Option<unsafe extern "C" fn(c: *mut ngx_connection_t)>;
-pub type ngx_err_t = ::aya_bpf::cty::c_int;
+pub type ngx_err_t = ::aya_ebpf::cty::c_int;
 extern "C" {
     pub fn ngx_strerror(err: ngx_err_t, errstr: *mut u_char, size: size_t) -> *mut u_char;
 }
 extern "C" {
     pub fn ngx_strerror_init() -> ngx_int_t;
 }
-pub type ngx_atomic_int_t = ::aya_bpf::cty::c_long;
-pub type ngx_atomic_uint_t = ::aya_bpf::cty::c_ulong;
+pub type ngx_atomic_int_t = ::aya_ebpf::cty::c_long;
+pub type ngx_atomic_uint_t = ::aya_ebpf::cty::c_ulong;
 pub type ngx_atomic_t = ngx_atomic_uint_t;
 extern "C" {
     pub fn ngx_spinlock(lock: *mut ngx_atomic_t, value: ngx_atomic_int_t, spin: ngx_uint_t);
@@ -996,18 +996,18 @@ extern "C" {
 extern "C" {
     pub fn ngx_libc_gmtime(s: time_t, tm: *mut tm);
 }
-pub type ngx_socket_t = ::aya_bpf::cty::c_int;
+pub type ngx_socket_t = ::aya_ebpf::cty::c_int;
 extern "C" {
-    pub fn ngx_nonblocking(s: ngx_socket_t) -> ::aya_bpf::cty::c_int;
+    pub fn ngx_nonblocking(s: ngx_socket_t) -> ::aya_ebpf::cty::c_int;
 }
 extern "C" {
-    pub fn ngx_blocking(s: ngx_socket_t) -> ::aya_bpf::cty::c_int;
+    pub fn ngx_blocking(s: ngx_socket_t) -> ::aya_ebpf::cty::c_int;
 }
 extern "C" {
-    pub fn ngx_tcp_nopush(s: ngx_socket_t) -> ::aya_bpf::cty::c_int;
+    pub fn ngx_tcp_nopush(s: ngx_socket_t) -> ::aya_ebpf::cty::c_int;
 }
 extern "C" {
-    pub fn ngx_tcp_push(s: ngx_socket_t) -> ::aya_bpf::cty::c_int;
+    pub fn ngx_tcp_push(s: ngx_socket_t) -> ::aya_ebpf::cty::c_int;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1030,55 +1030,55 @@ pub struct ngx_variable_value_t {
 }
 impl ngx_variable_value_t {
     #[inline]
-    pub fn len(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn len(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 28u8) as u32) }
     }
     #[inline]
-    pub fn set_len(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_len(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 28u8, val as u64)
         }
     }
     #[inline]
-    pub fn valid(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn valid(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_valid(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_valid(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(28usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn no_cacheable(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn no_cacheable(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_no_cacheable(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_no_cacheable(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(29usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn not_found(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn not_found(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_not_found(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_not_found(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(30usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn escape(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn escape(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_escape(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_escape(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(31usize, 1u8, val as u64)
@@ -1086,11 +1086,11 @@ impl ngx_variable_value_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        len: ::aya_bpf::cty::c_uint,
-        valid: ::aya_bpf::cty::c_uint,
-        no_cacheable: ::aya_bpf::cty::c_uint,
-        not_found: ::aya_bpf::cty::c_uint,
-        escape: ::aya_bpf::cty::c_uint,
+        len: ::aya_ebpf::cty::c_uint,
+        valid: ::aya_ebpf::cty::c_uint,
+        no_cacheable: ::aya_ebpf::cty::c_uint,
+        not_found: ::aya_ebpf::cty::c_uint,
+        escape: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 4usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 28u8, {
@@ -1129,13 +1129,13 @@ extern "C" {
     pub fn ngx_pstrdup(pool: *mut ngx_pool_t, src: *mut ngx_str_t) -> *mut u_char;
 }
 extern "C" {
-    pub fn ngx_sprintf(buf: *mut u_char, fmt: *const ::aya_bpf::cty::c_char, ...) -> *mut u_char;
+    pub fn ngx_sprintf(buf: *mut u_char, fmt: *const ::aya_ebpf::cty::c_char, ...) -> *mut u_char;
 }
 extern "C" {
     pub fn ngx_snprintf(
         buf: *mut u_char,
         max: size_t,
-        fmt: *const ::aya_bpf::cty::c_char,
+        fmt: *const ::aya_ebpf::cty::c_char,
         ...
     ) -> *mut u_char;
 }
@@ -1143,7 +1143,7 @@ extern "C" {
     pub fn ngx_slprintf(
         buf: *mut u_char,
         last: *mut u_char,
-        fmt: *const ::aya_bpf::cty::c_char,
+        fmt: *const ::aya_ebpf::cty::c_char,
         ...
     ) -> *mut u_char;
 }
@@ -1151,7 +1151,7 @@ extern "C" {
     pub fn ngx_vslprintf(
         buf: *mut u_char,
         last: *mut u_char,
-        fmt: *const ::aya_bpf::cty::c_char,
+        fmt: *const ::aya_ebpf::cty::c_char,
         args: *mut __va_list_tag,
     ) -> *mut u_char;
 }
@@ -1162,15 +1162,15 @@ extern "C" {
     pub fn ngx_strncasecmp(s1: *mut u_char, s2: *mut u_char, n: size_t) -> ngx_int_t;
 }
 extern "C" {
-    pub fn ngx_strnstr(s1: *mut u_char, s2: *mut ::aya_bpf::cty::c_char, n: size_t) -> *mut u_char;
+    pub fn ngx_strnstr(s1: *mut u_char, s2: *mut ::aya_ebpf::cty::c_char, n: size_t) -> *mut u_char;
 }
 extern "C" {
-    pub fn ngx_strstrn(s1: *mut u_char, s2: *mut ::aya_bpf::cty::c_char, n: size_t) -> *mut u_char;
+    pub fn ngx_strstrn(s1: *mut u_char, s2: *mut ::aya_ebpf::cty::c_char, n: size_t) -> *mut u_char;
 }
 extern "C" {
     pub fn ngx_strcasestrn(
         s1: *mut u_char,
-        s2: *mut ::aya_bpf::cty::c_char,
+        s2: *mut ::aya_ebpf::cty::c_char,
         n: size_t,
     ) -> *mut u_char;
 }
@@ -1288,18 +1288,18 @@ extern "C" {
 }
 extern "C" {
     pub fn ngx_sort(
-        base: *mut ::aya_bpf::cty::c_void,
+        base: *mut ::aya_ebpf::cty::c_void,
         n: size_t,
         size: size_t,
         cmp: ::core::option::Option<
             unsafe extern "C" fn(
-                arg1: *const ::aya_bpf::cty::c_void,
-                arg2: *const ::aya_bpf::cty::c_void,
+                arg1: *const ::aya_ebpf::cty::c_void,
+                arg2: *const ::aya_ebpf::cty::c_void,
             ) -> ngx_int_t,
         >,
     );
 }
-pub type ngx_fd_t = ::aya_bpf::cty::c_int;
+pub type ngx_fd_t = ::aya_ebpf::cty::c_int;
 pub type ngx_file_info_t = stat;
 pub type ngx_file_uniq_t = ino_t;
 #[repr(C)]
@@ -1307,7 +1307,7 @@ pub type ngx_file_uniq_t = ino_t;
 pub struct ngx_file_mapping_t {
     pub name: *mut u_char,
     pub size: size_t,
-    pub addr: *mut ::aya_bpf::cty::c_void,
+    pub addr: *mut ::aya_ebpf::cty::c_void,
     pub fd: ngx_fd_t,
     pub log: *mut ngx_log_t,
 }
@@ -1323,22 +1323,22 @@ pub struct ngx_dir_t {
 }
 impl ngx_dir_t {
     #[inline]
-    pub fn type_(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn type_(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 8u8) as u32) }
     }
     #[inline]
-    pub fn set_type(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_type(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 8u8, val as u64)
         }
     }
     #[inline]
-    pub fn valid_info(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn valid_info(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_valid_info(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_valid_info(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
@@ -1346,8 +1346,8 @@ impl ngx_dir_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        type_: ::aya_bpf::cty::c_uint,
-        valid_info: ::aya_bpf::cty::c_uint,
+        type_: ::aya_ebpf::cty::c_uint,
+        valid_info: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 8u8, {
@@ -1469,76 +1469,76 @@ extern "C" {
     pub fn ngx_init_setproctitle(log: *mut ngx_log_t) -> ngx_int_t;
 }
 extern "C" {
-    pub fn ngx_setproctitle(title: *mut ::aya_bpf::cty::c_char);
+    pub fn ngx_setproctitle(title: *mut ::aya_ebpf::cty::c_char);
 }
 pub type ngx_pid_t = pid_t;
 pub type ngx_spawn_proc_pt = ::core::option::Option<
-    unsafe extern "C" fn(cycle: *mut ngx_cycle_t, data: *mut ::aya_bpf::cty::c_void),
+    unsafe extern "C" fn(cycle: *mut ngx_cycle_t, data: *mut ::aya_ebpf::cty::c_void),
 >;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_process_t {
     pub pid: ngx_pid_t,
-    pub status: ::aya_bpf::cty::c_int,
+    pub status: ::aya_ebpf::cty::c_int,
     pub channel: [ngx_socket_t; 2usize],
     pub proc_: ngx_spawn_proc_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
-    pub name: *mut ::aya_bpf::cty::c_char,
+    pub data: *mut ::aya_ebpf::cty::c_void,
+    pub name: *mut ::aya_ebpf::cty::c_char,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 7usize],
 }
 impl ngx_process_t {
     #[inline]
-    pub fn respawn(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn respawn(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_respawn(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_respawn(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn just_spawn(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn just_spawn(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_just_spawn(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_just_spawn(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn detached(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn detached(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_detached(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_detached(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn exiting(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn exiting(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_exiting(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_exiting(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn exited(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn exited(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_exited(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_exited(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
@@ -1546,11 +1546,11 @@ impl ngx_process_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        respawn: ::aya_bpf::cty::c_uint,
-        just_spawn: ::aya_bpf::cty::c_uint,
-        detached: ::aya_bpf::cty::c_uint,
-        exiting: ::aya_bpf::cty::c_uint,
-        exited: ::aya_bpf::cty::c_uint,
+        respawn: ::aya_ebpf::cty::c_uint,
+        just_spawn: ::aya_ebpf::cty::c_uint,
+        detached: ::aya_ebpf::cty::c_uint,
+        exiting: ::aya_ebpf::cty::c_uint,
+        exited: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -1579,17 +1579,17 @@ impl ngx_process_t {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_exec_ctx_t {
-    pub path: *mut ::aya_bpf::cty::c_char,
-    pub name: *mut ::aya_bpf::cty::c_char,
-    pub argv: *const *mut ::aya_bpf::cty::c_char,
-    pub envp: *const *mut ::aya_bpf::cty::c_char,
+    pub path: *mut ::aya_ebpf::cty::c_char,
+    pub name: *mut ::aya_ebpf::cty::c_char,
+    pub argv: *const *mut ::aya_ebpf::cty::c_char,
+    pub envp: *const *mut ::aya_ebpf::cty::c_char,
 }
 extern "C" {
     pub fn ngx_spawn_process(
         cycle: *mut ngx_cycle_t,
         proc_: ngx_spawn_proc_pt,
-        data: *mut ::aya_bpf::cty::c_void,
-        name: *mut ::aya_bpf::cty::c_char,
+        data: *mut ::aya_ebpf::cty::c_void,
+        name: *mut ::aya_ebpf::cty::c_char,
         respawn: ngx_int_t,
     ) -> ngx_pid_t;
 }
@@ -1603,13 +1603,13 @@ extern "C" {
     pub fn ngx_debug_point();
 }
 extern "C" {
-    pub static mut ngx_argc: ::aya_bpf::cty::c_int;
+    pub static mut ngx_argc: ::aya_ebpf::cty::c_int;
 }
 extern "C" {
-    pub static mut ngx_argv: *mut *mut ::aya_bpf::cty::c_char;
+    pub static mut ngx_argv: *mut *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
-    pub static mut ngx_os_argv: *mut *mut ::aya_bpf::cty::c_char;
+    pub static mut ngx_os_argv: *mut *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub static mut ngx_pid: ngx_pid_t;
@@ -1637,7 +1637,7 @@ extern "C" {
     ) -> ngx_int_t;
 }
 extern "C" {
-    pub fn ngx_dlerror() -> *mut ::aya_bpf::cty::c_char;
+    pub fn ngx_dlerror() -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_parse_size(line: *mut ngx_str_t) -> ssize_t;
@@ -1665,10 +1665,10 @@ pub struct ngx_log_s {
     pub connection: ngx_atomic_uint_t,
     pub disk_full_time: time_t,
     pub handler: ngx_log_handler_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub writer: ngx_log_writer_pt,
-    pub wdata: *mut ::aya_bpf::cty::c_void,
-    pub action: *mut ::aya_bpf::cty::c_char,
+    pub wdata: *mut ::aya_ebpf::cty::c_void,
+    pub action: *mut ::aya_ebpf::cty::c_char,
     pub next: *mut ngx_log_t,
 }
 extern "C" {
@@ -1676,7 +1676,7 @@ extern "C" {
         level: ngx_uint_t,
         log: *mut ngx_log_t,
         err: ngx_err_t,
-        fmt: *const ::aya_bpf::cty::c_char,
+        fmt: *const ::aya_ebpf::cty::c_char,
         ...
     );
 }
@@ -1684,10 +1684,10 @@ extern "C" {
     pub fn ngx_log_init(prefix: *mut u_char) -> *mut ngx_log_t;
 }
 extern "C" {
-    pub fn ngx_log_abort(err: ngx_err_t, fmt: *const ::aya_bpf::cty::c_char, ...);
+    pub fn ngx_log_abort(err: ngx_err_t, fmt: *const ::aya_ebpf::cty::c_char, ...);
 }
 extern "C" {
-    pub fn ngx_log_stderr(err: ngx_err_t, fmt: *const ::aya_bpf::cty::c_char, ...);
+    pub fn ngx_log_stderr(err: ngx_err_t, fmt: *const ::aya_ebpf::cty::c_char, ...);
 }
 extern "C" {
     pub fn ngx_log_errno(buf: *mut u_char, last: *mut u_char, err: ngx_err_t) -> *mut u_char;
@@ -1705,7 +1705,7 @@ extern "C" {
     pub fn ngx_log_set_log(
         cf: *mut ngx_conf_t,
         head: *mut *mut ngx_log_t,
-    ) -> *mut ::aya_bpf::cty::c_char;
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub static mut ngx_errlog_module: ngx_module_t;
@@ -1714,17 +1714,17 @@ extern "C" {
     pub static mut ngx_use_stderr: ngx_uint_t;
 }
 extern "C" {
-    pub fn ngx_alloc(size: size_t, log: *mut ngx_log_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_alloc(size: size_t, log: *mut ngx_log_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
-    pub fn ngx_calloc(size: size_t, log: *mut ngx_log_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_calloc(size: size_t, log: *mut ngx_log_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_memalign(
         alignment: size_t,
         size: size_t,
         log: *mut ngx_log_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub static mut ngx_pagesize: ngx_uint_t;
@@ -1736,13 +1736,13 @@ extern "C" {
     pub static mut ngx_cacheline_size: ngx_uint_t;
 }
 pub type ngx_pool_cleanup_pt =
-    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_bpf::cty::c_void)>;
+    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_ebpf::cty::c_void)>;
 pub type ngx_pool_cleanup_t = ngx_pool_cleanup_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_pool_cleanup_s {
     pub handler: ngx_pool_cleanup_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub next: *mut ngx_pool_cleanup_t,
 }
 pub type ngx_pool_large_t = ngx_pool_large_s;
@@ -1750,7 +1750,7 @@ pub type ngx_pool_large_t = ngx_pool_large_s;
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_pool_large_s {
     pub next: *mut ngx_pool_large_t,
-    pub alloc: *mut ::aya_bpf::cty::c_void,
+    pub alloc: *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1788,23 +1788,23 @@ extern "C" {
     pub fn ngx_reset_pool(pool: *mut ngx_pool_t);
 }
 extern "C" {
-    pub fn ngx_palloc(pool: *mut ngx_pool_t, size: size_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_palloc(pool: *mut ngx_pool_t, size: size_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
-    pub fn ngx_pnalloc(pool: *mut ngx_pool_t, size: size_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_pnalloc(pool: *mut ngx_pool_t, size: size_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
-    pub fn ngx_pcalloc(pool: *mut ngx_pool_t, size: size_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_pcalloc(pool: *mut ngx_pool_t, size: size_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_pmemalign(
         pool: *mut ngx_pool_t,
         size: size_t,
         alignment: size_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
-    pub fn ngx_pfree(pool: *mut ngx_pool_t, p: *mut ::aya_bpf::cty::c_void) -> ngx_int_t;
+    pub fn ngx_pfree(pool: *mut ngx_pool_t, p: *mut ::aya_ebpf::cty::c_void) -> ngx_int_t;
 }
 extern "C" {
     pub fn ngx_pool_cleanup_add(p: *mut ngx_pool_t, size: size_t) -> *mut ngx_pool_cleanup_t;
@@ -1813,12 +1813,12 @@ extern "C" {
     pub fn ngx_pool_run_cleanup_file(p: *mut ngx_pool_t, fd: ngx_fd_t);
 }
 extern "C" {
-    pub fn ngx_pool_cleanup_file(data: *mut ::aya_bpf::cty::c_void);
+    pub fn ngx_pool_cleanup_file(data: *mut ::aya_ebpf::cty::c_void);
 }
 extern "C" {
-    pub fn ngx_pool_delete_file(data: *mut ::aya_bpf::cty::c_void);
+    pub fn ngx_pool_delete_file(data: *mut ::aya_ebpf::cty::c_void);
 }
-pub type ngx_buf_tag_t = *mut ::aya_bpf::cty::c_void;
+pub type ngx_buf_tag_t = *mut ::aya_ebpf::cty::c_void;
 pub type ngx_buf_t = ngx_buf_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1834,125 +1834,125 @@ pub struct ngx_buf_s {
     pub shadow: *mut ngx_buf_t,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize]>,
-    pub num: ::aya_bpf::cty::c_int,
+    pub num: ::aya_ebpf::cty::c_int,
 }
 impl ngx_buf_s {
     #[inline]
-    pub fn temporary(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn temporary(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_temporary(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_temporary(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn memory(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn memory(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_memory(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_memory(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn mmap(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn mmap(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_mmap(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_mmap(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn recycled(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn recycled(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_recycled(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_recycled(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn in_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn in_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_in_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_in_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn flush(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn flush(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_flush(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_flush(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn sync(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn sync(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_sync(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_sync(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn last_buf(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn last_buf(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_last_buf(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_last_buf(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn last_in_chain(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn last_in_chain(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_last_in_chain(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_last_in_chain(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn last_shadow(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn last_shadow(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_last_shadow(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_last_shadow(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn temp_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn temp_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_temp_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_temp_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(10usize, 1u8, val as u64)
@@ -1960,17 +1960,17 @@ impl ngx_buf_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        temporary: ::aya_bpf::cty::c_uint,
-        memory: ::aya_bpf::cty::c_uint,
-        mmap: ::aya_bpf::cty::c_uint,
-        recycled: ::aya_bpf::cty::c_uint,
-        in_file: ::aya_bpf::cty::c_uint,
-        flush: ::aya_bpf::cty::c_uint,
-        sync: ::aya_bpf::cty::c_uint,
-        last_buf: ::aya_bpf::cty::c_uint,
-        last_in_chain: ::aya_bpf::cty::c_uint,
-        last_shadow: ::aya_bpf::cty::c_uint,
-        temp_file: ::aya_bpf::cty::c_uint,
+        temporary: ::aya_ebpf::cty::c_uint,
+        memory: ::aya_ebpf::cty::c_uint,
+        mmap: ::aya_ebpf::cty::c_uint,
+        recycled: ::aya_ebpf::cty::c_uint,
+        in_file: ::aya_ebpf::cty::c_uint,
+        flush: ::aya_ebpf::cty::c_uint,
+        sync: ::aya_ebpf::cty::c_uint,
+        last_buf: ::aya_ebpf::cty::c_uint,
+        last_in_chain: ::aya_ebpf::cty::c_uint,
+        last_shadow: ::aya_ebpf::cty::c_uint,
+        temp_file: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -2034,7 +2034,7 @@ pub struct ngx_bufs_t {
 }
 pub type ngx_output_chain_ctx_t = ngx_output_chain_ctx_s;
 pub type ngx_output_chain_filter_pt = ::core::option::Option<
-    unsafe extern "C" fn(ctx: *mut ::aya_bpf::cty::c_void, in_: *mut ngx_chain_t) -> ngx_int_t,
+    unsafe extern "C" fn(ctx: *mut ::aya_ebpf::cty::c_void, in_: *mut ngx_chain_t) -> ngx_int_t,
 >;
 pub type ngx_output_chain_aio_pt = ::core::option::Option<
     unsafe extern "C" fn(ctx: *mut ngx_output_chain_ctx_t, file: *mut ngx_file_t),
@@ -2060,70 +2060,70 @@ pub struct ngx_output_chain_ctx_s {
     pub bufs: ngx_bufs_t,
     pub tag: ngx_buf_tag_t,
     pub output_filter: ngx_output_chain_filter_pt,
-    pub filter_ctx: *mut ::aya_bpf::cty::c_void,
+    pub filter_ctx: *mut ::aya_ebpf::cty::c_void,
 }
 impl ngx_output_chain_ctx_s {
     #[inline]
-    pub fn sendfile(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn sendfile(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_sendfile(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_sendfile(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn directio(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn directio(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_directio(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_directio(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn unaligned(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn unaligned(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_unaligned(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_unaligned(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn need_in_memory(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn need_in_memory(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_need_in_memory(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_need_in_memory(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn need_in_temp(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn need_in_temp(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_need_in_temp(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_need_in_temp(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn aio(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn aio(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_aio(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_aio(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
@@ -2131,12 +2131,12 @@ impl ngx_output_chain_ctx_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        sendfile: ::aya_bpf::cty::c_uint,
-        directio: ::aya_bpf::cty::c_uint,
-        unaligned: ::aya_bpf::cty::c_uint,
-        need_in_memory: ::aya_bpf::cty::c_uint,
-        need_in_temp: ::aya_bpf::cty::c_uint,
-        aio: ::aya_bpf::cty::c_uint,
+        sendfile: ::aya_ebpf::cty::c_uint,
+        directio: ::aya_ebpf::cty::c_uint,
+        unaligned: ::aya_ebpf::cty::c_uint,
+        need_in_memory: ::aya_ebpf::cty::c_uint,
+        need_in_temp: ::aya_ebpf::cty::c_uint,
+        aio: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -2191,7 +2191,7 @@ extern "C" {
     pub fn ngx_output_chain(ctx: *mut ngx_output_chain_ctx_t, in_: *mut ngx_chain_t) -> ngx_int_t;
 }
 extern "C" {
-    pub fn ngx_chain_writer(ctx: *mut ::aya_bpf::cty::c_void, in_: *mut ngx_chain_t) -> ngx_int_t;
+    pub fn ngx_chain_writer(ctx: *mut ::aya_ebpf::cty::c_void, in_: *mut ngx_chain_t) -> ngx_int_t;
 }
 extern "C" {
     pub fn ngx_chain_add_copy(
@@ -2242,7 +2242,7 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_array_t {
-    pub elts: *mut ::aya_bpf::cty::c_void,
+    pub elts: *mut ::aya_ebpf::cty::c_void,
     pub nelts: ngx_uint_t,
     pub size: size_t,
     pub nalloc: ngx_uint_t,
@@ -2255,16 +2255,16 @@ extern "C" {
     pub fn ngx_array_destroy(a: *mut ngx_array_t);
 }
 extern "C" {
-    pub fn ngx_array_push(a: *mut ngx_array_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_array_push(a: *mut ngx_array_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
-    pub fn ngx_array_push_n(a: *mut ngx_array_t, n: ngx_uint_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_array_push_n(a: *mut ngx_array_t, n: ngx_uint_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 pub type ngx_list_part_t = ngx_list_part_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_list_part_s {
-    pub elts: *mut ::aya_bpf::cty::c_void,
+    pub elts: *mut ::aya_ebpf::cty::c_void,
     pub nelts: ngx_uint_t,
     pub next: *mut ngx_list_part_t,
 }
@@ -2281,12 +2281,12 @@ extern "C" {
     pub fn ngx_list_create(pool: *mut ngx_pool_t, n: ngx_uint_t, size: size_t) -> *mut ngx_list_t;
 }
 extern "C" {
-    pub fn ngx_list_push(list: *mut ngx_list_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_list_push(list: *mut ngx_list_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_hash_elt_t {
-    pub value: *mut ::aya_bpf::cty::c_void,
+    pub value: *mut ::aya_ebpf::cty::c_void,
     pub len: u_short,
     pub name: [u_char; 1usize],
 }
@@ -2300,14 +2300,14 @@ pub struct ngx_hash_t {
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_hash_wildcard_t {
     pub hash: ngx_hash_t,
-    pub value: *mut ::aya_bpf::cty::c_void,
+    pub value: *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_hash_key_t {
     pub key: ngx_str_t,
     pub key_hash: ngx_uint_t,
-    pub value: *mut ::aya_bpf::cty::c_void,
+    pub value: *mut ::aya_ebpf::cty::c_void,
 }
 pub type ngx_hash_key_pt =
     ::core::option::Option<unsafe extern "C" fn(data: *mut u_char, len: size_t) -> ngx_uint_t>;
@@ -2325,7 +2325,7 @@ pub struct ngx_hash_init_t {
     pub key: ngx_hash_key_pt,
     pub max_size: ngx_uint_t,
     pub bucket_size: ngx_uint_t,
-    pub name: *mut ::aya_bpf::cty::c_char,
+    pub name: *mut ::aya_ebpf::cty::c_char,
     pub pool: *mut ngx_pool_t,
     pub temp_pool: *mut ngx_pool_t,
 }
@@ -2356,21 +2356,21 @@ extern "C" {
         key: ngx_uint_t,
         name: *mut u_char,
         len: size_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_hash_find_wc_head(
         hwc: *mut ngx_hash_wildcard_t,
         name: *mut u_char,
         len: size_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_hash_find_wc_tail(
         hwc: *mut ngx_hash_wildcard_t,
         name: *mut u_char,
         len: size_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_hash_find_combined(
@@ -2378,7 +2378,7 @@ extern "C" {
         key: ngx_uint_t,
         name: *mut u_char,
         len: size_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_hash_init(
@@ -2413,7 +2413,7 @@ extern "C" {
     pub fn ngx_hash_add_key(
         ha: *mut ngx_hash_keys_arrays_t,
         key: *mut ngx_str_t,
-        value: *mut ::aya_bpf::cty::c_void,
+        value: *mut ::aya_ebpf::cty::c_void,
         flags: ngx_uint_t,
     ) -> ngx_int_t;
 }
@@ -2429,7 +2429,7 @@ pub struct ngx_file_s {
     pub thread_handler: ::core::option::Option<
         unsafe extern "C" fn(task: *mut ngx_thread_task_t, file: *mut ngx_file_t) -> ngx_int_t,
     >,
-    pub thread_ctx: *mut ::aya_bpf::cty::c_void,
+    pub thread_ctx: *mut ::aya_ebpf::cty::c_void,
     pub thread_task: *mut ngx_thread_task_t,
     pub aio: *mut ngx_event_aio_t,
     pub _bitfield_align_1: [u8; 0],
@@ -2438,22 +2438,22 @@ pub struct ngx_file_s {
 }
 impl ngx_file_s {
     #[inline]
-    pub fn valid_info(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn valid_info(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_valid_info(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_valid_info(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn directio(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn directio(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_directio(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_directio(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -2461,8 +2461,8 @@ impl ngx_file_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        valid_info: ::aya_bpf::cty::c_uint,
-        directio: ::aya_bpf::cty::c_uint,
+        valid_info: ::aya_ebpf::cty::c_uint,
+        directio: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -2477,11 +2477,11 @@ impl ngx_file_s {
     }
 }
 pub type ngx_path_manager_pt =
-    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_bpf::cty::c_void) -> ngx_msec_t>;
+    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_ebpf::cty::c_void) -> ngx_msec_t>;
 pub type ngx_path_purger_pt =
-    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_bpf::cty::c_void) -> ngx_msec_t>;
+    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_ebpf::cty::c_void) -> ngx_msec_t>;
 pub type ngx_path_loader_pt =
-    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_bpf::cty::c_void)>;
+    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_ebpf::cty::c_void)>;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_path_t {
@@ -2491,7 +2491,7 @@ pub struct ngx_path_t {
     pub manager: ngx_path_manager_pt,
     pub purger: ngx_path_purger_pt,
     pub loader: ngx_path_loader_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub conf_file: *mut u_char,
     pub line: ngx_uint_t,
 }
@@ -2508,7 +2508,7 @@ pub struct ngx_temp_file_t {
     pub offset: off_t,
     pub path: *mut ngx_path_t,
     pub pool: *mut ngx_pool_t,
-    pub warn: *mut ::aya_bpf::cty::c_char,
+    pub warn: *mut ::aya_ebpf::cty::c_char,
     pub access: ngx_uint_t,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize]>,
@@ -2516,44 +2516,44 @@ pub struct ngx_temp_file_t {
 }
 impl ngx_temp_file_t {
     #[inline]
-    pub fn log_level(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn log_level(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 8u8) as u32) }
     }
     #[inline]
-    pub fn set_log_level(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_log_level(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 8u8, val as u64)
         }
     }
     #[inline]
-    pub fn persistent(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn persistent(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_persistent(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_persistent(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn clean(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn clean(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_clean(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_clean(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn thread_write(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn thread_write(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_thread_write(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_thread_write(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(10usize, 1u8, val as u64)
@@ -2561,10 +2561,10 @@ impl ngx_temp_file_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        log_level: ::aya_bpf::cty::c_uint,
-        persistent: ::aya_bpf::cty::c_uint,
-        clean: ::aya_bpf::cty::c_uint,
-        thread_write: ::aya_bpf::cty::c_uint,
+        log_level: ::aya_ebpf::cty::c_uint,
+        persistent: ::aya_ebpf::cty::c_uint,
+        clean: ::aya_ebpf::cty::c_uint,
+        thread_write: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 8u8, {
@@ -2599,22 +2599,22 @@ pub struct ngx_ext_rename_file_t {
 }
 impl ngx_ext_rename_file_t {
     #[inline]
-    pub fn create_path(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn create_path(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_create_path(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_create_path(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn delete_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn delete_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_delete_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_delete_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -2622,8 +2622,8 @@ impl ngx_ext_rename_file_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        create_path: ::aya_bpf::cty::c_uint,
-        delete_file: ::aya_bpf::cty::c_uint,
+        create_path: ::aya_ebpf::cty::c_uint,
+        delete_file: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -2649,8 +2649,8 @@ pub struct ngx_copy_file_t {
 pub type ngx_tree_ctx_t = ngx_tree_ctx_s;
 pub type ngx_tree_init_handler_pt = ::core::option::Option<
     unsafe extern "C" fn(
-        ctx: *mut ::aya_bpf::cty::c_void,
-        prev: *mut ::aya_bpf::cty::c_void,
+        ctx: *mut ::aya_ebpf::cty::c_void,
+        prev: *mut ::aya_ebpf::cty::c_void,
     ) -> ngx_int_t,
 >;
 pub type ngx_tree_handler_pt = ::core::option::Option<
@@ -2668,7 +2668,7 @@ pub struct ngx_tree_ctx_s {
     pub pre_tree_handler: ngx_tree_handler_pt,
     pub post_tree_handler: ngx_tree_handler_pt,
     pub spec_handler: ngx_tree_handler_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub alloc: size_t,
     pub log: *mut ngx_log_t,
 }
@@ -2731,8 +2731,8 @@ extern "C" {
     pub fn ngx_conf_set_path_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_merge_path_value(
@@ -2740,14 +2740,14 @@ extern "C" {
         path: *mut *mut ngx_path_t,
         prev: *mut ngx_path_t,
         init: *mut ngx_path_init_t,
-    ) -> *mut ::aya_bpf::cty::c_char;
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_access_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub static mut ngx_temp_number: *mut ngx_atomic_t;
@@ -2776,14 +2776,14 @@ pub type pcre = real_pcre;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct pcre_extra {
-    pub flags: ::aya_bpf::cty::c_ulong,
-    pub study_data: *mut ::aya_bpf::cty::c_void,
-    pub match_limit: ::aya_bpf::cty::c_ulong,
-    pub callout_data: *mut ::aya_bpf::cty::c_void,
-    pub tables: *const ::aya_bpf::cty::c_uchar,
-    pub match_limit_recursion: ::aya_bpf::cty::c_ulong,
-    pub mark: *mut *mut ::aya_bpf::cty::c_uchar,
-    pub executable_jit: *mut ::aya_bpf::cty::c_void,
+    pub flags: ::aya_ebpf::cty::c_ulong,
+    pub study_data: *mut ::aya_ebpf::cty::c_void,
+    pub match_limit: ::aya_ebpf::cty::c_ulong,
+    pub callout_data: *mut ::aya_ebpf::cty::c_void,
+    pub tables: *const ::aya_ebpf::cty::c_uchar,
+    pub match_limit_recursion: ::aya_ebpf::cty::c_ulong,
+    pub mark: *mut *mut ::aya_ebpf::cty::c_uchar,
+    pub executable_jit: *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2798,9 +2798,9 @@ pub struct ngx_regex_compile_t {
     pub pool: *mut ngx_pool_t,
     pub options: ngx_int_t,
     pub regex: *mut ngx_regex_t,
-    pub captures: ::aya_bpf::cty::c_int,
-    pub named_captures: ::aya_bpf::cty::c_int,
-    pub name_size: ::aya_bpf::cty::c_int,
+    pub captures: ::aya_ebpf::cty::c_int,
+    pub named_captures: ::aya_ebpf::cty::c_int,
+    pub name_size: ::aya_ebpf::cty::c_int,
     pub names: *mut u_char,
     pub err: ngx_str_t,
 }
@@ -2838,7 +2838,7 @@ pub struct ngx_radix_tree_t {
     pub root: *mut ngx_radix_node_t,
     pub pool: *mut ngx_pool_t,
     pub free: *mut ngx_radix_node_t,
-    pub start: *mut ::aya_bpf::cty::c_char,
+    pub start: *mut ::aya_ebpf::cty::c_char,
     pub size: size_t,
 }
 extern "C" {
@@ -3011,16 +3011,16 @@ pub struct ngx_slab_pool_t {
     pub zero: u_char,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
-    pub data: *mut ::aya_bpf::cty::c_void,
-    pub addr: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
+    pub addr: *mut ::aya_ebpf::cty::c_void,
 }
 impl ngx_slab_pool_t {
     #[inline]
-    pub fn log_nomem(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn log_nomem(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_log_nomem(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_log_nomem(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
@@ -3028,7 +3028,7 @@ impl ngx_slab_pool_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        log_nomem: ::aya_bpf::cty::c_uint,
+        log_nomem: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -3045,29 +3045,29 @@ extern "C" {
     pub fn ngx_slab_init(pool: *mut ngx_slab_pool_t);
 }
 extern "C" {
-    pub fn ngx_slab_alloc(pool: *mut ngx_slab_pool_t, size: size_t) -> *mut ::aya_bpf::cty::c_void;
+    pub fn ngx_slab_alloc(pool: *mut ngx_slab_pool_t, size: size_t) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_slab_alloc_locked(
         pool: *mut ngx_slab_pool_t,
         size: size_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_slab_calloc(pool: *mut ngx_slab_pool_t, size: size_t)
-        -> *mut ::aya_bpf::cty::c_void;
+        -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_slab_calloc_locked(
         pool: *mut ngx_slab_pool_t,
         size: size_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
-    pub fn ngx_slab_free(pool: *mut ngx_slab_pool_t, p: *mut ::aya_bpf::cty::c_void);
+    pub fn ngx_slab_free(pool: *mut ngx_slab_pool_t, p: *mut ::aya_ebpf::cty::c_void);
 }
 extern "C" {
-    pub fn ngx_slab_free_locked(pool: *mut ngx_slab_pool_t, p: *mut ::aya_bpf::cty::c_void);
+    pub fn ngx_slab_free_locked(pool: *mut ngx_slab_pool_t, p: *mut ::aya_ebpf::cty::c_void);
 }
 #[repr(C)]
 #[derive(Copy, Clone)]
@@ -3117,66 +3117,66 @@ pub struct ngx_url_t {
     pub uri: ngx_str_t,
     pub port: in_port_t,
     pub default_port: in_port_t,
-    pub family: ::aya_bpf::cty::c_int,
+    pub family: ::aya_ebpf::cty::c_int,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
     pub socklen: socklen_t,
     pub sockaddr: ngx_sockaddr_t,
     pub addrs: *mut ngx_addr_t,
     pub naddrs: ngx_uint_t,
-    pub err: *mut ::aya_bpf::cty::c_char,
+    pub err: *mut ::aya_ebpf::cty::c_char,
 }
 impl ngx_url_t {
     #[inline]
-    pub fn listen(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn listen(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_listen(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_listen(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn uri_part(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn uri_part(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_uri_part(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_uri_part(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn no_resolve(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn no_resolve(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_no_resolve(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_no_resolve(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn no_port(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn no_port(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_no_port(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_no_port(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn wildcard(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn wildcard(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_wildcard(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_wildcard(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
@@ -3184,11 +3184,11 @@ impl ngx_url_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        listen: ::aya_bpf::cty::c_uint,
-        uri_part: ::aya_bpf::cty::c_uint,
-        no_resolve: ::aya_bpf::cty::c_uint,
-        no_port: ::aya_bpf::cty::c_uint,
-        wildcard: ::aya_bpf::cty::c_uint,
+        listen: ::aya_ebpf::cty::c_uint,
+        uri_part: ::aya_ebpf::cty::c_uint,
+        no_resolve: ::aya_ebpf::cty::c_uint,
+        no_port: ::aya_ebpf::cty::c_uint,
+        wildcard: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -3234,8 +3234,8 @@ extern "C" {
 }
 extern "C" {
     pub fn ngx_inet_ntop(
-        family: ::aya_bpf::cty::c_int,
-        addr: *mut ::aya_bpf::cty::c_void,
+        family: ::aya_ebpf::cty::c_int,
+        addr: *mut ::aya_ebpf::cty::c_void,
         text: *mut u_char,
         len: size_t,
     ) -> size_t;
@@ -3285,7 +3285,7 @@ extern "C" {
 }
 pub type ngx_shm_zone_t = ngx_shm_zone_s;
 pub type ngx_shm_zone_init_pt = ::core::option::Option<
-    unsafe extern "C" fn(zone: *mut ngx_shm_zone_t, data: *mut ::aya_bpf::cty::c_void) -> ngx_int_t,
+    unsafe extern "C" fn(zone: *mut ngx_shm_zone_t, data: *mut ::aya_ebpf::cty::c_void) -> ngx_int_t,
 >;
 pub type ngx_log_intercept_pt = ::core::option::Option<
     unsafe extern "C" fn(
@@ -3298,16 +3298,16 @@ pub type ngx_log_intercept_pt = ::core::option::Option<
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_shm_zone_s {
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub shm: ngx_shm_t,
     pub init: ngx_shm_zone_init_pt,
-    pub tag: *mut ::aya_bpf::cty::c_void,
+    pub tag: *mut ::aya_ebpf::cty::c_void,
     pub noreuse: ngx_uint_t,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_cycle_s {
-    pub conf_ctx: *mut *mut *mut *mut ::aya_bpf::cty::c_void,
+    pub conf_ctx: *mut *mut *mut *mut ::aya_ebpf::cty::c_void,
     pub pool: *mut ngx_pool_t,
     pub log: *mut ngx_log_t,
     pub new_log: ngx_log_t,
@@ -3340,8 +3340,8 @@ pub struct ngx_cycle_s {
     pub lock_file: ngx_str_t,
     pub hostname: ngx_str_t,
     pub intercept_error_log_handler: ngx_log_intercept_pt,
-    pub intercept_error_log_data: *mut ::aya_bpf::cty::c_void,
-    pub entered_logger: ::aya_bpf::cty::c_uint,
+    pub intercept_error_log_data: *mut ::aya_ebpf::cty::c_void,
+    pub entered_logger: ::aya_ebpf::cty::c_uint,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3355,11 +3355,11 @@ pub struct ngx_core_conf_t {
     pub debug_points: ngx_int_t,
     pub rlimit_nofile: ngx_int_t,
     pub rlimit_core: off_t,
-    pub priority: ::aya_bpf::cty::c_int,
+    pub priority: ::aya_ebpf::cty::c_int,
     pub cpu_affinity_auto: ngx_uint_t,
     pub cpu_affinity_n: ngx_uint_t,
     pub cpu_affinity: *mut ngx_cpuset_t,
-    pub username: *mut ::aya_bpf::cty::c_char,
+    pub username: *mut ::aya_ebpf::cty::c_char,
     pub user: ngx_uid_t,
     pub group: ngx_gid_t,
     pub working_directory: ngx_str_t,
@@ -3367,7 +3367,7 @@ pub struct ngx_core_conf_t {
     pub pid: ngx_str_t,
     pub oldpid: ngx_str_t,
     pub env: ngx_array_t,
-    pub environment: *mut *mut ::aya_bpf::cty::c_char,
+    pub environment: *mut *mut ::aya_ebpf::cty::c_char,
 }
 extern "C" {
     pub fn ngx_init_cycle(old_cycle: *mut ngx_cycle_t) -> *mut ngx_cycle_t;
@@ -3381,7 +3381,7 @@ extern "C" {
 extern "C" {
     pub fn ngx_signal_process(
         cycle: *mut ngx_cycle_t,
-        sig: *mut ::aya_bpf::cty::c_char,
+        sig: *mut ::aya_ebpf::cty::c_char,
     ) -> ngx_int_t;
 }
 extern "C" {
@@ -3391,12 +3391,12 @@ extern "C" {
     pub fn ngx_set_environment(
         cycle: *mut ngx_cycle_t,
         last: *mut ngx_uint_t,
-    ) -> *mut *mut ::aya_bpf::cty::c_char;
+    ) -> *mut *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_exec_new_binary(
         cycle: *mut ngx_cycle_t,
-        argv: *const *mut ::aya_bpf::cty::c_char,
+        argv: *const *mut ::aya_ebpf::cty::c_char,
     ) -> ngx_pid_t;
 }
 extern "C" {
@@ -3407,7 +3407,7 @@ extern "C" {
         cf: *mut ngx_conf_t,
         name: *mut ngx_str_t,
         size: size_t,
-        tag: *mut ::aya_bpf::cty::c_void,
+        tag: *mut ::aya_ebpf::cty::c_void,
     ) -> *mut ngx_shm_zone_t;
 }
 extern "C" {
@@ -3519,22 +3519,22 @@ pub union ngx_resolver_node_t__bindgen_ty_2 {
 }
 impl ngx_resolver_node_t {
     #[inline]
-    pub fn tcp(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn tcp(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_tcp(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_tcp(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn tcp6(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn tcp6(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_tcp6(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_tcp6(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -3542,8 +3542,8 @@ impl ngx_resolver_node_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        tcp: ::aya_bpf::cty::c_uint,
-        tcp6: ::aya_bpf::cty::c_uint,
+        tcp: ::aya_ebpf::cty::c_uint,
+        tcp6: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -3561,7 +3561,7 @@ impl ngx_resolver_node_t {
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_resolver_s {
     pub event: *mut ngx_event_t,
-    pub dummy: *mut ::aya_bpf::cty::c_void,
+    pub dummy: *mut ::aya_ebpf::cty::c_void,
     pub log: *mut ngx_log_t,
     pub ident: ngx_int_t,
     pub connections: ngx_array_t,
@@ -3608,7 +3608,7 @@ pub struct ngx_resolver_ctx_s {
     pub nsrvs: ngx_uint_t,
     pub srvs: *mut ngx_resolver_srv_name_t,
     pub handler: ngx_resolver_handler_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub timeout: ngx_msec_t,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
@@ -3617,33 +3617,33 @@ pub struct ngx_resolver_ctx_s {
 }
 impl ngx_resolver_ctx_s {
     #[inline]
-    pub fn quick(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn quick(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_quick(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_quick(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn async_(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn async_(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_async(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_async(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn cancelable(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn cancelable(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_cancelable(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_cancelable(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
@@ -3651,9 +3651,9 @@ impl ngx_resolver_ctx_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        quick: ::aya_bpf::cty::c_uint,
-        async_: ::aya_bpf::cty::c_uint,
-        cancelable: ::aya_bpf::cty::c_uint,
+        quick: ::aya_ebpf::cty::c_uint,
+        async_: ::aya_ebpf::cty::c_uint,
+        cancelable: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -3697,13 +3697,13 @@ extern "C" {
     pub fn ngx_resolve_addr_done(ctx: *mut ngx_resolver_ctx_t);
 }
 extern "C" {
-    pub fn ngx_resolver_strerror(err: ngx_int_t) -> *mut ::aya_bpf::cty::c_char;
+    pub fn ngx_resolver_strerror(err: ngx_int_t) -> *mut ::aya_ebpf::cty::c_char;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_cache_manager_ctx_t {
     pub handler: ngx_event_handler_pt,
-    pub name: *mut ::aya_bpf::cty::c_char,
+    pub name: *mut ::aya_ebpf::cty::c_char,
     pub delay: ngx_msec_t,
 }
 extern "C" {
@@ -3772,12 +3772,12 @@ pub struct ngx_command_s {
         unsafe extern "C" fn(
             cf: *mut ngx_conf_t,
             cmd: *mut ngx_command_t,
-            conf: *mut ::aya_bpf::cty::c_void,
-        ) -> *mut ::aya_bpf::cty::c_char,
+            conf: *mut ::aya_ebpf::cty::c_void,
+        ) -> *mut ::aya_ebpf::cty::c_char,
     >,
     pub conf: ngx_uint_t,
     pub offset: ngx_uint_t,
-    pub post: *mut ::aya_bpf::cty::c_void,
+    pub post: *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3787,7 +3787,7 @@ pub struct ngx_open_file_s {
     pub flush: ::core::option::Option<
         unsafe extern "C" fn(file: *mut ngx_open_file_t, log: *mut ngx_log_t),
     >,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3807,31 +3807,31 @@ pub type ngx_conf_handler_pt = ::core::option::Option<
     unsafe extern "C" fn(
         cf: *mut ngx_conf_t,
         dummy: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char,
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char,
 >;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_conf_s {
-    pub name: *mut ::aya_bpf::cty::c_char,
+    pub name: *mut ::aya_ebpf::cty::c_char,
     pub args: *mut ngx_array_t,
     pub cycle: *mut ngx_cycle_t,
     pub pool: *mut ngx_pool_t,
     pub temp_pool: *mut ngx_pool_t,
     pub conf_file: *mut ngx_conf_file_t,
     pub log: *mut ngx_log_t,
-    pub ctx: *mut ::aya_bpf::cty::c_void,
+    pub ctx: *mut ::aya_ebpf::cty::c_void,
     pub module_type: ngx_uint_t,
     pub cmd_type: ngx_uint_t,
     pub handler: ngx_conf_handler_pt,
-    pub handler_conf: *mut ::aya_bpf::cty::c_char,
+    pub handler_conf: *mut ::aya_ebpf::cty::c_char,
 }
 pub type ngx_conf_post_handler_pt = ::core::option::Option<
     unsafe extern "C" fn(
         cf: *mut ngx_conf_t,
-        data: *mut ::aya_bpf::cty::c_void,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char,
+        data: *mut ::aya_ebpf::cty::c_void,
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char,
 >;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3842,8 +3842,8 @@ pub struct ngx_conf_post_t {
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_conf_deprecated_t {
     pub post_handler: ngx_conf_post_handler_pt,
-    pub old_name: *mut ::aya_bpf::cty::c_char,
-    pub new_name: *mut ::aya_bpf::cty::c_char,
+    pub old_name: *mut ::aya_ebpf::cty::c_char,
+    pub new_name: *mut ::aya_ebpf::cty::c_char,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3867,32 +3867,32 @@ pub struct ngx_conf_bitmask_t {
 extern "C" {
     pub fn ngx_conf_deprecated(
         cf: *mut ngx_conf_t,
-        post: *mut ::aya_bpf::cty::c_void,
-        data: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        post: *mut ::aya_ebpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_check_num_bounds(
         cf: *mut ngx_conf_t,
-        post: *mut ::aya_bpf::cty::c_void,
-        data: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        post: *mut ::aya_ebpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
-    pub fn ngx_conf_param(cf: *mut ngx_conf_t) -> *mut ::aya_bpf::cty::c_char;
+    pub fn ngx_conf_param(cf: *mut ngx_conf_t) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_parse(
         cf: *mut ngx_conf_t,
         filename: *mut ngx_str_t,
-    ) -> *mut ::aya_bpf::cty::c_char;
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_include(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_full_name(
@@ -3912,7 +3912,7 @@ extern "C" {
         level: ngx_uint_t,
         cf: *mut ngx_conf_t,
         err: ngx_err_t,
-        fmt: *const ::aya_bpf::cty::c_char,
+        fmt: *const ::aya_ebpf::cty::c_char,
         ...
     );
 }
@@ -3920,97 +3920,97 @@ extern "C" {
     pub fn ngx_conf_set_flag_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_str_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_str_array_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_keyval_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_num_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_size_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_off_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_msec_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_sec_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_bufs_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_enum_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_conf_set_bitmask_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_module_s {
     pub ctx_index: ngx_uint_t,
     pub index: ngx_uint_t,
-    pub name: *mut ::aya_bpf::cty::c_char,
+    pub name: *mut ::aya_ebpf::cty::c_char,
     pub spare0: ngx_uint_t,
     pub spare1: ngx_uint_t,
     pub version: ngx_uint_t,
-    pub signature: *const ::aya_bpf::cty::c_char,
-    pub ctx: *mut ::aya_bpf::cty::c_void,
+    pub signature: *const ::aya_ebpf::cty::c_char,
+    pub ctx: *mut ::aya_ebpf::cty::c_void,
     pub commands: *mut ngx_command_t,
     pub type_: ngx_uint_t,
     pub init_master: ::core::option::Option<unsafe extern "C" fn(log: *mut ngx_log_t) -> ngx_int_t>,
@@ -4037,13 +4037,13 @@ pub struct ngx_module_s {
 pub struct ngx_core_module_t {
     pub name: ngx_str_t,
     pub create_conf: ::core::option::Option<
-        unsafe extern "C" fn(cycle: *mut ngx_cycle_t) -> *mut ::aya_bpf::cty::c_void,
+        unsafe extern "C" fn(cycle: *mut ngx_cycle_t) -> *mut ::aya_ebpf::cty::c_void,
     >,
     pub init_conf: ::core::option::Option<
         unsafe extern "C" fn(
             cycle: *mut ngx_cycle_t,
-            conf: *mut ::aya_bpf::cty::c_void,
-        ) -> *mut ::aya_bpf::cty::c_char,
+            conf: *mut ::aya_ebpf::cty::c_void,
+        ) -> *mut ::aya_ebpf::cty::c_char,
     >,
 }
 extern "C" {
@@ -4063,7 +4063,7 @@ extern "C" {
         cf: *mut ngx_conf_t,
         file: *mut ngx_str_t,
         module: *mut ngx_module_t,
-        order: *mut *mut ::aya_bpf::cty::c_char,
+        order: *mut *mut ::aya_ebpf::cty::c_char,
     ) -> ngx_int_t;
 }
 extern "C" {
@@ -4073,7 +4073,7 @@ extern "C" {
     pub static mut ngx_max_module: ngx_uint_t;
 }
 extern "C" {
-    pub static mut ngx_module_names: [*mut ::aya_bpf::cty::c_char; 0usize];
+    pub static mut ngx_module_names: [*mut ::aya_ebpf::cty::c_char; 0usize];
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -4086,7 +4086,7 @@ pub struct ngx_open_file_info_t {
     pub directio: off_t,
     pub read_ahead: size_t,
     pub err: ngx_err_t,
-    pub failed: *mut ::aya_bpf::cty::c_char,
+    pub failed: *mut ::aya_ebpf::cty::c_char,
     pub valid: time_t,
     pub min_uses: ngx_uint_t,
     pub disable_symlinks_from: size_t,
@@ -4096,121 +4096,121 @@ pub struct ngx_open_file_info_t {
 }
 impl ngx_open_file_info_t {
     #[inline]
-    pub fn disable_symlinks(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn disable_symlinks(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_disable_symlinks(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_disable_symlinks(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn test_dir(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn test_dir(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_test_dir(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_test_dir(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn test_only(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn test_only(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_test_only(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_test_only(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn log(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn log(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_log(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_log(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn errors(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn errors(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_errors(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_errors(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn events(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn events(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_events(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_events(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_dir(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_dir(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_dir(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_dir(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_link(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_link(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_link(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_link(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_exec(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_exec(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_exec(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_exec(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_directio(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_directio(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_directio(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_directio(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(11usize, 1u8, val as u64)
@@ -4218,17 +4218,17 @@ impl ngx_open_file_info_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        disable_symlinks: ::aya_bpf::cty::c_uint,
-        test_dir: ::aya_bpf::cty::c_uint,
-        test_only: ::aya_bpf::cty::c_uint,
-        log: ::aya_bpf::cty::c_uint,
-        errors: ::aya_bpf::cty::c_uint,
-        events: ::aya_bpf::cty::c_uint,
-        is_dir: ::aya_bpf::cty::c_uint,
-        is_file: ::aya_bpf::cty::c_uint,
-        is_link: ::aya_bpf::cty::c_uint,
-        is_exec: ::aya_bpf::cty::c_uint,
-        is_directio: ::aya_bpf::cty::c_uint,
+        disable_symlinks: ::aya_ebpf::cty::c_uint,
+        test_dir: ::aya_ebpf::cty::c_uint,
+        test_only: ::aya_ebpf::cty::c_uint,
+        log: ::aya_ebpf::cty::c_uint,
+        errors: ::aya_ebpf::cty::c_uint,
+        events: ::aya_ebpf::cty::c_uint,
+        is_dir: ::aya_ebpf::cty::c_uint,
+        is_file: ::aya_ebpf::cty::c_uint,
+        is_link: ::aya_ebpf::cty::c_uint,
+        is_exec: ::aya_ebpf::cty::c_uint,
+        is_directio: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 2u8, {
@@ -4300,99 +4300,99 @@ pub struct ngx_cached_open_file_s {
 }
 impl ngx_cached_open_file_s {
     #[inline]
-    pub fn disable_symlinks(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn disable_symlinks(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_disable_symlinks(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_disable_symlinks(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn count(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn count(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 24u8) as u32) }
     }
     #[inline]
-    pub fn set_count(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_count(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 24u8, val as u64)
         }
     }
     #[inline]
-    pub fn close(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn close(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(26usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_close(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_close(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(26usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn use_event(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn use_event(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(27usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_use_event(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_use_event(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(27usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_dir(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_dir(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(28usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_dir(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_dir(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(28usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(29usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(29usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_link(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_link(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(30usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_link(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_link(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(30usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_exec(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_exec(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(31usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_exec(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_exec(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(31usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_directio(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_directio(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(32usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_directio(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_directio(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(32usize, 1u8, val as u64)
@@ -4400,15 +4400,15 @@ impl ngx_cached_open_file_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        disable_symlinks: ::aya_bpf::cty::c_uint,
-        count: ::aya_bpf::cty::c_uint,
-        close: ::aya_bpf::cty::c_uint,
-        use_event: ::aya_bpf::cty::c_uint,
-        is_dir: ::aya_bpf::cty::c_uint,
-        is_file: ::aya_bpf::cty::c_uint,
-        is_link: ::aya_bpf::cty::c_uint,
-        is_exec: ::aya_bpf::cty::c_uint,
-        is_directio: ::aya_bpf::cty::c_uint,
+        disable_symlinks: ::aya_ebpf::cty::c_uint,
+        count: ::aya_ebpf::cty::c_uint,
+        close: ::aya_ebpf::cty::c_uint,
+        use_event: ::aya_ebpf::cty::c_uint,
+        is_dir: ::aya_ebpf::cty::c_uint,
+        is_file: ::aya_ebpf::cty::c_uint,
+        is_link: ::aya_ebpf::cty::c_uint,
+        is_exec: ::aya_ebpf::cty::c_uint,
+        is_directio: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 5usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 5usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 2u8, {
@@ -4471,7 +4471,7 @@ pub struct ngx_open_file_cache_cleanup_t {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_open_file_cache_event_t {
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub read: *mut ngx_event_t,
     pub write: *mut ngx_event_t,
     pub fd: ngx_fd_t,
@@ -4539,7 +4539,7 @@ extern "C" {
 extern "C" {
     pub fn ngx_os_signal_process(
         cycle: *mut ngx_cycle_t,
-        sig: *mut ::aya_bpf::cty::c_char,
+        sig: *mut ::aya_ebpf::cty::c_char,
         pid: ngx_pid_t,
     ) -> ngx_int_t;
 }
@@ -4626,15 +4626,15 @@ pub struct ngx_listening_s {
     pub socklen: socklen_t,
     pub addr_text_max_len: size_t,
     pub addr_text: ngx_str_t,
-    pub type_: ::aya_bpf::cty::c_int,
-    pub backlog: ::aya_bpf::cty::c_int,
-    pub rcvbuf: ::aya_bpf::cty::c_int,
-    pub sndbuf: ::aya_bpf::cty::c_int,
-    pub keepidle: ::aya_bpf::cty::c_int,
-    pub keepintvl: ::aya_bpf::cty::c_int,
-    pub keepcnt: ::aya_bpf::cty::c_int,
+    pub type_: ::aya_ebpf::cty::c_int,
+    pub backlog: ::aya_ebpf::cty::c_int,
+    pub rcvbuf: ::aya_ebpf::cty::c_int,
+    pub sndbuf: ::aya_ebpf::cty::c_int,
+    pub keepidle: ::aya_ebpf::cty::c_int,
+    pub keepintvl: ::aya_ebpf::cty::c_int,
+    pub keepcnt: ::aya_ebpf::cty::c_int,
     pub handler: ngx_connection_handler_pt,
-    pub servers: *mut ::aya_bpf::cty::c_void,
+    pub servers: *mut ::aya_ebpf::cty::c_void,
     pub log: ngx_log_t,
     pub logp: *mut ngx_log_t,
     pub pool_size: size_t,
@@ -4645,202 +4645,202 @@ pub struct ngx_listening_s {
     pub worker: ngx_uint_t,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 3usize]>,
-    pub fastopen: ::aya_bpf::cty::c_int,
+    pub fastopen: ::aya_ebpf::cty::c_int,
 }
 impl ngx_listening_s {
     #[inline]
-    pub fn open(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn open(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_open(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_open(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn remain(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn remain(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_remain(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_remain(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn ignore(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn ignore(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_ignore(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_ignore(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn bound(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn bound(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_bound(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_bound(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn inherited(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn inherited(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_inherited(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_inherited(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn nonblocking_accept(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn nonblocking_accept(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_nonblocking_accept(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_nonblocking_accept(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn listen(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn listen(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_listen(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_listen(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn nonblocking(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn nonblocking(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_nonblocking(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_nonblocking(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn shared(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn shared(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_shared(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_shared(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn addr_ntop(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn addr_ntop(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_addr_ntop(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_addr_ntop(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn wildcard(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn wildcard(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_wildcard(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_wildcard(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn ipv6only(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn ipv6only(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_ipv6only(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_ipv6only(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn reuseport(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn reuseport(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_reuseport(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_reuseport(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn add_reuseport(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn add_reuseport(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_add_reuseport(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_add_reuseport(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn keepalive(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn keepalive(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_keepalive(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_keepalive(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(14usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn deferred_accept(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn deferred_accept(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_deferred_accept(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_deferred_accept(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn delete_deferred(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn delete_deferred(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_delete_deferred(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_delete_deferred(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn add_deferred(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn add_deferred(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_add_deferred(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_add_deferred(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(18usize, 1u8, val as u64)
@@ -4848,24 +4848,24 @@ impl ngx_listening_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        open: ::aya_bpf::cty::c_uint,
-        remain: ::aya_bpf::cty::c_uint,
-        ignore: ::aya_bpf::cty::c_uint,
-        bound: ::aya_bpf::cty::c_uint,
-        inherited: ::aya_bpf::cty::c_uint,
-        nonblocking_accept: ::aya_bpf::cty::c_uint,
-        listen: ::aya_bpf::cty::c_uint,
-        nonblocking: ::aya_bpf::cty::c_uint,
-        shared: ::aya_bpf::cty::c_uint,
-        addr_ntop: ::aya_bpf::cty::c_uint,
-        wildcard: ::aya_bpf::cty::c_uint,
-        ipv6only: ::aya_bpf::cty::c_uint,
-        reuseport: ::aya_bpf::cty::c_uint,
-        add_reuseport: ::aya_bpf::cty::c_uint,
-        keepalive: ::aya_bpf::cty::c_uint,
-        deferred_accept: ::aya_bpf::cty::c_uint,
-        delete_deferred: ::aya_bpf::cty::c_uint,
-        add_deferred: ::aya_bpf::cty::c_uint,
+        open: ::aya_ebpf::cty::c_uint,
+        remain: ::aya_ebpf::cty::c_uint,
+        ignore: ::aya_ebpf::cty::c_uint,
+        bound: ::aya_ebpf::cty::c_uint,
+        inherited: ::aya_ebpf::cty::c_uint,
+        nonblocking_accept: ::aya_ebpf::cty::c_uint,
+        listen: ::aya_ebpf::cty::c_uint,
+        nonblocking: ::aya_ebpf::cty::c_uint,
+        shared: ::aya_ebpf::cty::c_uint,
+        addr_ntop: ::aya_ebpf::cty::c_uint,
+        wildcard: ::aya_ebpf::cty::c_uint,
+        ipv6only: ::aya_ebpf::cty::c_uint,
+        reuseport: ::aya_ebpf::cty::c_uint,
+        add_reuseport: ::aya_ebpf::cty::c_uint,
+        keepalive: ::aya_ebpf::cty::c_uint,
+        deferred_accept: ::aya_ebpf::cty::c_uint,
+        delete_deferred: ::aya_ebpf::cty::c_uint,
+        add_deferred: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 3usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 3usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -4948,19 +4948,19 @@ pub const ngx_connection_log_error_e_NGX_ERROR_ERR: ngx_connection_log_error_e =
 pub const ngx_connection_log_error_e_NGX_ERROR_INFO: ngx_connection_log_error_e = 2;
 pub const ngx_connection_log_error_e_NGX_ERROR_IGNORE_ECONNRESET: ngx_connection_log_error_e = 3;
 pub const ngx_connection_log_error_e_NGX_ERROR_IGNORE_EINVAL: ngx_connection_log_error_e = 4;
-pub type ngx_connection_log_error_e = ::aya_bpf::cty::c_uint;
+pub type ngx_connection_log_error_e = ::aya_ebpf::cty::c_uint;
 pub const ngx_connection_tcp_nodelay_e_NGX_TCP_NODELAY_UNSET: ngx_connection_tcp_nodelay_e = 0;
 pub const ngx_connection_tcp_nodelay_e_NGX_TCP_NODELAY_SET: ngx_connection_tcp_nodelay_e = 1;
 pub const ngx_connection_tcp_nodelay_e_NGX_TCP_NODELAY_DISABLED: ngx_connection_tcp_nodelay_e = 2;
-pub type ngx_connection_tcp_nodelay_e = ::aya_bpf::cty::c_uint;
+pub type ngx_connection_tcp_nodelay_e = ::aya_ebpf::cty::c_uint;
 pub const ngx_connection_tcp_nopush_e_NGX_TCP_NOPUSH_UNSET: ngx_connection_tcp_nopush_e = 0;
 pub const ngx_connection_tcp_nopush_e_NGX_TCP_NOPUSH_SET: ngx_connection_tcp_nopush_e = 1;
 pub const ngx_connection_tcp_nopush_e_NGX_TCP_NOPUSH_DISABLED: ngx_connection_tcp_nopush_e = 2;
-pub type ngx_connection_tcp_nopush_e = ::aya_bpf::cty::c_uint;
+pub type ngx_connection_tcp_nopush_e = ::aya_ebpf::cty::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_connection_s {
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub read: *mut ngx_event_t,
     pub write: *mut ngx_event_t,
     pub fd: ngx_socket_t,
@@ -4972,7 +4972,7 @@ pub struct ngx_connection_s {
     pub sent: off_t,
     pub log: *mut ngx_log_t,
     pub pool: *mut ngx_pool_t,
-    pub type_: ::aya_bpf::cty::c_int,
+    pub type_: ::aya_ebpf::cty::c_int,
     pub sockaddr: *mut sockaddr,
     pub socklen: socklen_t,
     pub addr_text: ngx_str_t,
@@ -4991,165 +4991,165 @@ pub struct ngx_connection_s {
 }
 impl ngx_connection_s {
     #[inline]
-    pub fn buffered(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn buffered(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 8u8) as u32) }
     }
     #[inline]
-    pub fn set_buffered(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_buffered(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 8u8, val as u64)
         }
     }
     #[inline]
-    pub fn log_error(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn log_error(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 3u8) as u32) }
     }
     #[inline]
-    pub fn set_log_error(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_log_error(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 3u8, val as u64)
         }
     }
     #[inline]
-    pub fn timedout(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn timedout(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_timedout(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_timedout(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn error(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn error(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_error(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_error(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn destroyed(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn destroyed(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_destroyed(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_destroyed(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn idle(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn idle(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_idle(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_idle(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn reusable(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn reusable(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_reusable(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_reusable(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn close(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn close(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_close(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_close(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn shared(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn shared(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_shared(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_shared(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn sendfile(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn sendfile(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_sendfile(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_sendfile(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(18usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn sndlowat(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn sndlowat(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_sndlowat(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_sndlowat(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(19usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn tcp_nodelay(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn tcp_nodelay(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_tcp_nodelay(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_tcp_nodelay(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(20usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn tcp_nopush(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn tcp_nopush(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(22usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_tcp_nopush(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_tcp_nopush(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(22usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn need_last_buf(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn need_last_buf(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(24usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_need_last_buf(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_need_last_buf(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(24usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn busy_count(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn busy_count(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(25usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_busy_count(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_busy_count(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(25usize, 2u8, val as u64)
@@ -5157,21 +5157,21 @@ impl ngx_connection_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        buffered: ::aya_bpf::cty::c_uint,
-        log_error: ::aya_bpf::cty::c_uint,
-        timedout: ::aya_bpf::cty::c_uint,
-        error: ::aya_bpf::cty::c_uint,
-        destroyed: ::aya_bpf::cty::c_uint,
-        idle: ::aya_bpf::cty::c_uint,
-        reusable: ::aya_bpf::cty::c_uint,
-        close: ::aya_bpf::cty::c_uint,
-        shared: ::aya_bpf::cty::c_uint,
-        sendfile: ::aya_bpf::cty::c_uint,
-        sndlowat: ::aya_bpf::cty::c_uint,
-        tcp_nodelay: ::aya_bpf::cty::c_uint,
-        tcp_nopush: ::aya_bpf::cty::c_uint,
-        need_last_buf: ::aya_bpf::cty::c_uint,
-        busy_count: ::aya_bpf::cty::c_uint,
+        buffered: ::aya_ebpf::cty::c_uint,
+        log_error: ::aya_ebpf::cty::c_uint,
+        timedout: ::aya_ebpf::cty::c_uint,
+        error: ::aya_ebpf::cty::c_uint,
+        destroyed: ::aya_ebpf::cty::c_uint,
+        idle: ::aya_ebpf::cty::c_uint,
+        reusable: ::aya_ebpf::cty::c_uint,
+        close: ::aya_ebpf::cty::c_uint,
+        shared: ::aya_ebpf::cty::c_uint,
+        sendfile: ::aya_ebpf::cty::c_uint,
+        sndlowat: ::aya_ebpf::cty::c_uint,
+        tcp_nodelay: ::aya_ebpf::cty::c_uint,
+        tcp_nopush: ::aya_ebpf::cty::c_uint,
+        need_last_buf: ::aya_ebpf::cty::c_uint,
+        busy_count: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 4usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 8u8, {
@@ -5279,7 +5279,7 @@ extern "C" {
     pub fn ngx_connection_error(
         c: *mut ngx_connection_t,
         err: ngx_err_t,
-        text: *mut ::aya_bpf::cty::c_char,
+        text: *mut ::aya_ebpf::cty::c_char,
     ) -> ngx_int_t;
 }
 extern "C" {
@@ -5306,22 +5306,22 @@ pub struct ngx_syslog_peer_t {
 }
 impl ngx_syslog_peer_t {
     #[inline]
-    pub fn busy(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn busy(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_busy(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_busy(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn nohostname(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn nohostname(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_nohostname(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_nohostname(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -5329,8 +5329,8 @@ impl ngx_syslog_peer_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        busy: ::aya_bpf::cty::c_uint,
-        nohostname: ::aya_bpf::cty::c_uint,
+        busy: ::aya_ebpf::cty::c_uint,
+        nohostname: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -5348,7 +5348,7 @@ extern "C" {
     pub fn ngx_syslog_process_conf(
         cf: *mut ngx_conf_t,
         peer: *mut ngx_syslog_peer_t,
-    ) -> *mut ::aya_bpf::cty::c_char;
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_syslog_add_header(peer: *mut ngx_syslog_peer_t, buf: *mut u_char) -> *mut u_char;
@@ -5485,7 +5485,7 @@ pub struct ngx_http_regex_t {
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_http_map_regex_t {
     pub regex: *mut ngx_http_regex_t,
-    pub value: *mut ::aya_bpf::cty::c_void,
+    pub value: *mut ::aya_ebpf::cty::c_void,
 }
 extern "C" {
     pub fn ngx_http_regex_compile(
@@ -5512,7 +5512,7 @@ extern "C" {
         r: *mut ngx_http_request_t,
         map: *mut ngx_http_map_t,
         match_: *mut ngx_str_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_http_variables_add_core_vars(cf: *mut ngx_conf_t) -> ngx_int_t;
@@ -5529,9 +5529,9 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_http_conf_ctx_t {
-    pub main_conf: *mut *mut ::aya_bpf::cty::c_void,
-    pub srv_conf: *mut *mut ::aya_bpf::cty::c_void,
-    pub loc_conf: *mut *mut ::aya_bpf::cty::c_void,
+    pub main_conf: *mut *mut ::aya_ebpf::cty::c_void,
+    pub srv_conf: *mut *mut ::aya_ebpf::cty::c_void,
+    pub loc_conf: *mut *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -5541,33 +5541,33 @@ pub struct ngx_http_module_t {
     pub postconfiguration:
         ::core::option::Option<unsafe extern "C" fn(cf: *mut ngx_conf_t) -> ngx_int_t>,
     pub create_main_conf: ::core::option::Option<
-        unsafe extern "C" fn(cf: *mut ngx_conf_t) -> *mut ::aya_bpf::cty::c_void,
+        unsafe extern "C" fn(cf: *mut ngx_conf_t) -> *mut ::aya_ebpf::cty::c_void,
     >,
     pub init_main_conf: ::core::option::Option<
         unsafe extern "C" fn(
             cf: *mut ngx_conf_t,
-            conf: *mut ::aya_bpf::cty::c_void,
-        ) -> *mut ::aya_bpf::cty::c_char,
+            conf: *mut ::aya_ebpf::cty::c_void,
+        ) -> *mut ::aya_ebpf::cty::c_char,
     >,
     pub create_srv_conf: ::core::option::Option<
-        unsafe extern "C" fn(cf: *mut ngx_conf_t) -> *mut ::aya_bpf::cty::c_void,
+        unsafe extern "C" fn(cf: *mut ngx_conf_t) -> *mut ::aya_ebpf::cty::c_void,
     >,
     pub merge_srv_conf: ::core::option::Option<
         unsafe extern "C" fn(
             cf: *mut ngx_conf_t,
-            prev: *mut ::aya_bpf::cty::c_void,
-            conf: *mut ::aya_bpf::cty::c_void,
-        ) -> *mut ::aya_bpf::cty::c_char,
+            prev: *mut ::aya_ebpf::cty::c_void,
+            conf: *mut ::aya_ebpf::cty::c_void,
+        ) -> *mut ::aya_ebpf::cty::c_char,
     >,
     pub create_loc_conf: ::core::option::Option<
-        unsafe extern "C" fn(cf: *mut ngx_conf_t) -> *mut ::aya_bpf::cty::c_void,
+        unsafe extern "C" fn(cf: *mut ngx_conf_t) -> *mut ::aya_ebpf::cty::c_void,
     >,
     pub merge_loc_conf: ::core::option::Option<
         unsafe extern "C" fn(
             cf: *mut ngx_conf_t,
-            prev: *mut ::aya_bpf::cty::c_void,
-            conf: *mut ::aya_bpf::cty::c_void,
-        ) -> *mut ::aya_bpf::cty::c_char,
+            prev: *mut ::aya_ebpf::cty::c_void,
+            conf: *mut ::aya_ebpf::cty::c_void,
+        ) -> *mut ::aya_ebpf::cty::c_char,
     >,
 }
 pub const ngx_http_state_e_NGX_HTTP_INITING_REQUEST_STATE: ngx_http_state_e = 0;
@@ -5579,7 +5579,7 @@ pub const ngx_http_state_e_NGX_HTTP_READING_UPSTREAM_STATE: ngx_http_state_e = 5
 pub const ngx_http_state_e_NGX_HTTP_WRITING_REQUEST_STATE: ngx_http_state_e = 6;
 pub const ngx_http_state_e_NGX_HTTP_LINGERING_CLOSE_STATE: ngx_http_state_e = 7;
 pub const ngx_http_state_e_NGX_HTTP_KEEPALIVE_STATE: ngx_http_state_e = 8;
-pub type ngx_http_state_e = ::aya_bpf::cty::c_uint;
+pub type ngx_http_state_e = ::aya_ebpf::cty::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_http_header_t {
@@ -5637,99 +5637,99 @@ pub struct ngx_http_headers_in_t {
 }
 impl ngx_http_headers_in_t {
     #[inline]
-    pub fn connection_type(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn connection_type(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_connection_type(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_connection_type(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn chunked(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn chunked(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_chunked(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_chunked(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn msie(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn msie(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_msie(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_msie(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn msie6(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn msie6(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_msie6(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_msie6(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn opera(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn opera(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_opera(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_opera(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn gecko(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn gecko(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_gecko(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_gecko(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn chrome(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn chrome(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_chrome(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_chrome(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn safari(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn safari(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_safari(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_safari(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn konqueror(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn konqueror(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_konqueror(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_konqueror(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
@@ -5737,15 +5737,15 @@ impl ngx_http_headers_in_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        connection_type: ::aya_bpf::cty::c_uint,
-        chunked: ::aya_bpf::cty::c_uint,
-        msie: ::aya_bpf::cty::c_uint,
-        msie6: ::aya_bpf::cty::c_uint,
-        opera: ::aya_bpf::cty::c_uint,
-        gecko: ::aya_bpf::cty::c_uint,
-        chrome: ::aya_bpf::cty::c_uint,
-        safari: ::aya_bpf::cty::c_uint,
-        konqueror: ::aya_bpf::cty::c_uint,
+        connection_type: ::aya_ebpf::cty::c_uint,
+        chunked: ::aya_ebpf::cty::c_uint,
+        msie: ::aya_ebpf::cty::c_uint,
+        msie6: ::aya_ebpf::cty::c_uint,
+        opera: ::aya_ebpf::cty::c_uint,
+        gecko: ::aya_ebpf::cty::c_uint,
+        chrome: ::aya_ebpf::cty::c_uint,
+        safari: ::aya_ebpf::cty::c_uint,
+        konqueror: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 2u8, {
@@ -5850,22 +5850,22 @@ pub struct ngx_http_connection_t {
 }
 impl ngx_http_connection_t {
     #[inline]
-    pub fn ssl(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn ssl(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_ssl(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_ssl(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn proxy_protocol(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn proxy_protocol(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_proxy_protocol(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_proxy_protocol(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -5873,8 +5873,8 @@ impl ngx_http_connection_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        ssl: ::aya_bpf::cty::c_uint,
-        proxy_protocol: ::aya_bpf::cty::c_uint,
+        ssl: ::aya_ebpf::cty::c_uint,
+        proxy_protocol: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -5889,19 +5889,19 @@ impl ngx_http_connection_t {
     }
 }
 pub type ngx_http_cleanup_pt =
-    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_bpf::cty::c_void)>;
+    ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_ebpf::cty::c_void)>;
 pub type ngx_http_cleanup_t = ngx_http_cleanup_s;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_http_cleanup_s {
     pub handler: ngx_http_cleanup_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub next: *mut ngx_http_cleanup_t,
 }
 pub type ngx_http_post_subrequest_pt = ::core::option::Option<
     unsafe extern "C" fn(
         r: *mut ngx_http_request_t,
-        data: *mut ::aya_bpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
         rc: ngx_int_t,
     ) -> ngx_int_t,
 >;
@@ -5909,7 +5909,7 @@ pub type ngx_http_post_subrequest_pt = ::core::option::Option<
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_http_post_subrequest_t {
     pub handler: ngx_http_post_subrequest_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
 }
 pub type ngx_http_postponed_request_t = ngx_http_postponed_request_s;
 #[repr(C)]
@@ -5935,10 +5935,10 @@ pub type ngx_http_event_handler_pt =
 pub struct ngx_http_request_s {
     pub signature: u32,
     pub connection: *mut ngx_connection_t,
-    pub ctx: *mut *mut ::aya_bpf::cty::c_void,
-    pub main_conf: *mut *mut ::aya_bpf::cty::c_void,
-    pub srv_conf: *mut *mut ::aya_bpf::cty::c_void,
-    pub loc_conf: *mut *mut ::aya_bpf::cty::c_void,
+    pub ctx: *mut *mut ::aya_ebpf::cty::c_void,
+    pub main_conf: *mut *mut ::aya_ebpf::cty::c_void,
+    pub srv_conf: *mut *mut ::aya_ebpf::cty::c_void,
+    pub loc_conf: *mut *mut ::aya_ebpf::cty::c_void,
     pub read_event_handler: ngx_http_event_handler_pt,
     pub write_event_handler: ngx_http_event_handler_pt,
     pub cache: *mut ngx_http_cache_t,
@@ -5972,7 +5972,7 @@ pub struct ngx_http_request_s {
     pub access_code: ngx_uint_t,
     pub variables: *mut ngx_http_variable_value_t,
     pub ncaptures: ngx_uint_t,
-    pub captures: *mut ::aya_bpf::cty::c_int,
+    pub captures: *mut ::aya_ebpf::cty::c_int,
     pub captures_data: *mut u_char,
     pub limit_rate: size_t,
     pub limit_rate_after: size_t,
@@ -6012,726 +6012,726 @@ pub struct ngx_http_request_s {
 }
 impl ngx_http_request_s {
     #[inline]
-    pub fn count(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn count(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 16u8) as u32) }
     }
     #[inline]
-    pub fn set_count(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_count(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 16u8, val as u64)
         }
     }
     #[inline]
-    pub fn subrequests(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn subrequests(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 8u8) as u32) }
     }
     #[inline]
-    pub fn set_subrequests(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_subrequests(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(16usize, 8u8, val as u64)
         }
     }
     #[inline]
-    pub fn blocked(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn blocked(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(24usize, 8u8) as u32) }
     }
     #[inline]
-    pub fn set_blocked(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_blocked(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(24usize, 8u8, val as u64)
         }
     }
     #[inline]
-    pub fn aio(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn aio(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(32usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_aio(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_aio(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(32usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn http_state(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn http_state(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(33usize, 4u8) as u32) }
     }
     #[inline]
-    pub fn set_http_state(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_http_state(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(33usize, 4u8, val as u64)
         }
     }
     #[inline]
-    pub fn complex_uri(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn complex_uri(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(37usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_complex_uri(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_complex_uri(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(37usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn quoted_uri(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn quoted_uri(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(38usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_quoted_uri(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_quoted_uri(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(38usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn plus_in_uri(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn plus_in_uri(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(39usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_plus_in_uri(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_plus_in_uri(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(39usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn space_in_uri(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn space_in_uri(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(40usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_space_in_uri(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_space_in_uri(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(40usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn invalid_header(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn invalid_header(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(41usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_invalid_header(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_invalid_header(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(41usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn add_uri_to_alias(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn add_uri_to_alias(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(42usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_add_uri_to_alias(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_add_uri_to_alias(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(42usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn valid_location(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn valid_location(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(43usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_valid_location(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_valid_location(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(43usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn valid_unparsed_uri(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn valid_unparsed_uri(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(44usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_valid_unparsed_uri(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_valid_unparsed_uri(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(44usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn uri_changed(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn uri_changed(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(45usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_uri_changed(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_uri_changed(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(45usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn uri_changes(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn uri_changes(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(46usize, 4u8) as u32) }
     }
     #[inline]
-    pub fn set_uri_changes(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_uri_changes(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(46usize, 4u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_body_in_single_buf(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_body_in_single_buf(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(50usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_body_in_single_buf(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_body_in_single_buf(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(50usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_body_in_file_only(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_body_in_file_only(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(51usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_body_in_file_only(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_body_in_file_only(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(51usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_body_in_persistent_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_body_in_persistent_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(52usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_body_in_persistent_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_body_in_persistent_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(52usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_body_in_clean_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_body_in_clean_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(53usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_body_in_clean_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_body_in_clean_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(53usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_body_file_group_access(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_body_file_group_access(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(54usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_body_file_group_access(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_body_file_group_access(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(54usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_body_file_log_level(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_body_file_log_level(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(55usize, 3u8) as u32) }
     }
     #[inline]
-    pub fn set_request_body_file_log_level(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_body_file_log_level(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(55usize, 3u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_body_no_buffering(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_body_no_buffering(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(58usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_body_no_buffering(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_body_no_buffering(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(58usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn subrequest_in_memory(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn subrequest_in_memory(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(59usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_subrequest_in_memory(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_subrequest_in_memory(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(59usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn waited(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn waited(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(60usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_waited(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_waited(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(60usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn cached(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn cached(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(61usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_cached(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_cached(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(61usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn gzip_tested(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn gzip_tested(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(62usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_gzip_tested(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_gzip_tested(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(62usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn gzip_ok(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn gzip_ok(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(63usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_gzip_ok(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_gzip_ok(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(63usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn gzip_vary(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn gzip_vary(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(64usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_gzip_vary(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_gzip_vary(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(64usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn proxy(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn proxy(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(65usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_proxy(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_proxy(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(65usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn bypass_cache(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn bypass_cache(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(66usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_bypass_cache(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_bypass_cache(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(66usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn no_cache(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn no_cache(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(67usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_no_cache(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_no_cache(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(67usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn limit_conn_set(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn limit_conn_set(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(68usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_limit_conn_set(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_limit_conn_set(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(68usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn limit_req_set(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn limit_req_set(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(69usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_limit_req_set(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_limit_req_set(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(69usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn pipeline(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn pipeline(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(70usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_pipeline(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_pipeline(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(70usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn chunked(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn chunked(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(71usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_chunked(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_chunked(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(71usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn header_only(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn header_only(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(72usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_header_only(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_header_only(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(72usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn expect_trailers(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn expect_trailers(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(73usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_expect_trailers(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_expect_trailers(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(73usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn keepalive(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn keepalive(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(74usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_keepalive(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_keepalive(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(74usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn lingering_close(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn lingering_close(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(75usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_lingering_close(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_lingering_close(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(75usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn discard_body(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn discard_body(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(76usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_discard_body(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_discard_body(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(76usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn reading_body(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn reading_body(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(77usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_reading_body(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_reading_body(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(77usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn internal(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn internal(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(78usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_internal(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_internal(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(78usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn error_page(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn error_page(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(79usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_error_page(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_error_page(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(79usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn filter_finalize(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn filter_finalize(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(80usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_filter_finalize(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_filter_finalize(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(80usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn post_action(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn post_action(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(81usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_post_action(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_post_action(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(81usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_complete(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_complete(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(82usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_complete(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_complete(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(82usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_output(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_output(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(83usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_output(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_output(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(83usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn header_sent(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn header_sent(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(84usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_header_sent(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_header_sent(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(84usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn expect_tested(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn expect_tested(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(85usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_expect_tested(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_expect_tested(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(85usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn root_tested(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn root_tested(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(86usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_root_tested(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_root_tested(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(86usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn done(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn done(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(87usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_done(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_done(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(87usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn logged(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn logged(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(88usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_logged(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_logged(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(88usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn buffered(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn buffered(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(89usize, 4u8) as u32) }
     }
     #[inline]
-    pub fn set_buffered(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_buffered(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(89usize, 4u8, val as u64)
         }
     }
     #[inline]
-    pub fn main_filter_need_in_memory(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn main_filter_need_in_memory(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(93usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_main_filter_need_in_memory(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_main_filter_need_in_memory(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(93usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn filter_need_in_memory(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn filter_need_in_memory(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(94usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_filter_need_in_memory(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_filter_need_in_memory(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(94usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn filter_need_temporary(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn filter_need_temporary(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(95usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_filter_need_temporary(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_filter_need_temporary(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(95usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn preserve_body(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn preserve_body(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(96usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_preserve_body(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_preserve_body(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(96usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn allow_ranges(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn allow_ranges(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(97usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_allow_ranges(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_allow_ranges(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(97usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn subrequest_ranges(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn subrequest_ranges(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(98usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_subrequest_ranges(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_subrequest_ranges(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(98usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn single_range(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn single_range(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(99usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_single_range(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_single_range(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(99usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn disable_not_modified(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn disable_not_modified(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(100usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_disable_not_modified(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_disable_not_modified(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(100usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn stat_reading(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn stat_reading(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(101usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_stat_reading(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_stat_reading(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(101usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn stat_writing(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn stat_writing(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(102usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_stat_writing(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_stat_writing(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(102usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn stat_processing(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn stat_processing(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(103usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_stat_processing(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_stat_processing(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(103usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn background(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn background(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(104usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_background(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_background(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(104usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn health_check(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn health_check(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(105usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_health_check(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_health_check(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(105usize, 1u8, val as u64)
@@ -6739,72 +6739,72 @@ impl ngx_http_request_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        count: ::aya_bpf::cty::c_uint,
-        subrequests: ::aya_bpf::cty::c_uint,
-        blocked: ::aya_bpf::cty::c_uint,
-        aio: ::aya_bpf::cty::c_uint,
-        http_state: ::aya_bpf::cty::c_uint,
-        complex_uri: ::aya_bpf::cty::c_uint,
-        quoted_uri: ::aya_bpf::cty::c_uint,
-        plus_in_uri: ::aya_bpf::cty::c_uint,
-        space_in_uri: ::aya_bpf::cty::c_uint,
-        invalid_header: ::aya_bpf::cty::c_uint,
-        add_uri_to_alias: ::aya_bpf::cty::c_uint,
-        valid_location: ::aya_bpf::cty::c_uint,
-        valid_unparsed_uri: ::aya_bpf::cty::c_uint,
-        uri_changed: ::aya_bpf::cty::c_uint,
-        uri_changes: ::aya_bpf::cty::c_uint,
-        request_body_in_single_buf: ::aya_bpf::cty::c_uint,
-        request_body_in_file_only: ::aya_bpf::cty::c_uint,
-        request_body_in_persistent_file: ::aya_bpf::cty::c_uint,
-        request_body_in_clean_file: ::aya_bpf::cty::c_uint,
-        request_body_file_group_access: ::aya_bpf::cty::c_uint,
-        request_body_file_log_level: ::aya_bpf::cty::c_uint,
-        request_body_no_buffering: ::aya_bpf::cty::c_uint,
-        subrequest_in_memory: ::aya_bpf::cty::c_uint,
-        waited: ::aya_bpf::cty::c_uint,
-        cached: ::aya_bpf::cty::c_uint,
-        gzip_tested: ::aya_bpf::cty::c_uint,
-        gzip_ok: ::aya_bpf::cty::c_uint,
-        gzip_vary: ::aya_bpf::cty::c_uint,
-        proxy: ::aya_bpf::cty::c_uint,
-        bypass_cache: ::aya_bpf::cty::c_uint,
-        no_cache: ::aya_bpf::cty::c_uint,
-        limit_conn_set: ::aya_bpf::cty::c_uint,
-        limit_req_set: ::aya_bpf::cty::c_uint,
-        pipeline: ::aya_bpf::cty::c_uint,
-        chunked: ::aya_bpf::cty::c_uint,
-        header_only: ::aya_bpf::cty::c_uint,
-        expect_trailers: ::aya_bpf::cty::c_uint,
-        keepalive: ::aya_bpf::cty::c_uint,
-        lingering_close: ::aya_bpf::cty::c_uint,
-        discard_body: ::aya_bpf::cty::c_uint,
-        reading_body: ::aya_bpf::cty::c_uint,
-        internal: ::aya_bpf::cty::c_uint,
-        error_page: ::aya_bpf::cty::c_uint,
-        filter_finalize: ::aya_bpf::cty::c_uint,
-        post_action: ::aya_bpf::cty::c_uint,
-        request_complete: ::aya_bpf::cty::c_uint,
-        request_output: ::aya_bpf::cty::c_uint,
-        header_sent: ::aya_bpf::cty::c_uint,
-        expect_tested: ::aya_bpf::cty::c_uint,
-        root_tested: ::aya_bpf::cty::c_uint,
-        done: ::aya_bpf::cty::c_uint,
-        logged: ::aya_bpf::cty::c_uint,
-        buffered: ::aya_bpf::cty::c_uint,
-        main_filter_need_in_memory: ::aya_bpf::cty::c_uint,
-        filter_need_in_memory: ::aya_bpf::cty::c_uint,
-        filter_need_temporary: ::aya_bpf::cty::c_uint,
-        preserve_body: ::aya_bpf::cty::c_uint,
-        allow_ranges: ::aya_bpf::cty::c_uint,
-        subrequest_ranges: ::aya_bpf::cty::c_uint,
-        single_range: ::aya_bpf::cty::c_uint,
-        disable_not_modified: ::aya_bpf::cty::c_uint,
-        stat_reading: ::aya_bpf::cty::c_uint,
-        stat_writing: ::aya_bpf::cty::c_uint,
-        stat_processing: ::aya_bpf::cty::c_uint,
-        background: ::aya_bpf::cty::c_uint,
-        health_check: ::aya_bpf::cty::c_uint,
+        count: ::aya_ebpf::cty::c_uint,
+        subrequests: ::aya_ebpf::cty::c_uint,
+        blocked: ::aya_ebpf::cty::c_uint,
+        aio: ::aya_ebpf::cty::c_uint,
+        http_state: ::aya_ebpf::cty::c_uint,
+        complex_uri: ::aya_ebpf::cty::c_uint,
+        quoted_uri: ::aya_ebpf::cty::c_uint,
+        plus_in_uri: ::aya_ebpf::cty::c_uint,
+        space_in_uri: ::aya_ebpf::cty::c_uint,
+        invalid_header: ::aya_ebpf::cty::c_uint,
+        add_uri_to_alias: ::aya_ebpf::cty::c_uint,
+        valid_location: ::aya_ebpf::cty::c_uint,
+        valid_unparsed_uri: ::aya_ebpf::cty::c_uint,
+        uri_changed: ::aya_ebpf::cty::c_uint,
+        uri_changes: ::aya_ebpf::cty::c_uint,
+        request_body_in_single_buf: ::aya_ebpf::cty::c_uint,
+        request_body_in_file_only: ::aya_ebpf::cty::c_uint,
+        request_body_in_persistent_file: ::aya_ebpf::cty::c_uint,
+        request_body_in_clean_file: ::aya_ebpf::cty::c_uint,
+        request_body_file_group_access: ::aya_ebpf::cty::c_uint,
+        request_body_file_log_level: ::aya_ebpf::cty::c_uint,
+        request_body_no_buffering: ::aya_ebpf::cty::c_uint,
+        subrequest_in_memory: ::aya_ebpf::cty::c_uint,
+        waited: ::aya_ebpf::cty::c_uint,
+        cached: ::aya_ebpf::cty::c_uint,
+        gzip_tested: ::aya_ebpf::cty::c_uint,
+        gzip_ok: ::aya_ebpf::cty::c_uint,
+        gzip_vary: ::aya_ebpf::cty::c_uint,
+        proxy: ::aya_ebpf::cty::c_uint,
+        bypass_cache: ::aya_ebpf::cty::c_uint,
+        no_cache: ::aya_ebpf::cty::c_uint,
+        limit_conn_set: ::aya_ebpf::cty::c_uint,
+        limit_req_set: ::aya_ebpf::cty::c_uint,
+        pipeline: ::aya_ebpf::cty::c_uint,
+        chunked: ::aya_ebpf::cty::c_uint,
+        header_only: ::aya_ebpf::cty::c_uint,
+        expect_trailers: ::aya_ebpf::cty::c_uint,
+        keepalive: ::aya_ebpf::cty::c_uint,
+        lingering_close: ::aya_ebpf::cty::c_uint,
+        discard_body: ::aya_ebpf::cty::c_uint,
+        reading_body: ::aya_ebpf::cty::c_uint,
+        internal: ::aya_ebpf::cty::c_uint,
+        error_page: ::aya_ebpf::cty::c_uint,
+        filter_finalize: ::aya_ebpf::cty::c_uint,
+        post_action: ::aya_ebpf::cty::c_uint,
+        request_complete: ::aya_ebpf::cty::c_uint,
+        request_output: ::aya_ebpf::cty::c_uint,
+        header_sent: ::aya_ebpf::cty::c_uint,
+        expect_tested: ::aya_ebpf::cty::c_uint,
+        root_tested: ::aya_ebpf::cty::c_uint,
+        done: ::aya_ebpf::cty::c_uint,
+        logged: ::aya_ebpf::cty::c_uint,
+        buffered: ::aya_ebpf::cty::c_uint,
+        main_filter_need_in_memory: ::aya_ebpf::cty::c_uint,
+        filter_need_in_memory: ::aya_ebpf::cty::c_uint,
+        filter_need_temporary: ::aya_ebpf::cty::c_uint,
+        preserve_body: ::aya_ebpf::cty::c_uint,
+        allow_ranges: ::aya_ebpf::cty::c_uint,
+        subrequest_ranges: ::aya_ebpf::cty::c_uint,
+        single_range: ::aya_ebpf::cty::c_uint,
+        disable_not_modified: ::aya_ebpf::cty::c_uint,
+        stat_reading: ::aya_ebpf::cty::c_uint,
+        stat_writing: ::aya_ebpf::cty::c_uint,
+        stat_processing: ::aya_ebpf::cty::c_uint,
+        background: ::aya_ebpf::cty::c_uint,
+        health_check: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 14usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 14usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 16u8, {
@@ -7084,22 +7084,22 @@ impl ngx_http_request_s {
         __bindgen_bitfield_unit
     }
     #[inline]
-    pub fn http_minor(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn http_minor(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_2.get(0usize, 16u8) as u32) }
     }
     #[inline]
-    pub fn set_http_minor(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_http_minor(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_2.set(0usize, 16u8, val as u64)
         }
     }
     #[inline]
-    pub fn http_major(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn http_major(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_2.get(16usize, 16u8) as u32) }
     }
     #[inline]
-    pub fn set_http_major(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_http_major(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_2.set(16usize, 16u8, val as u64)
@@ -7107,8 +7107,8 @@ impl ngx_http_request_s {
     }
     #[inline]
     pub fn new_bitfield_2(
-        http_minor: ::aya_bpf::cty::c_uint,
-        http_major: ::aya_bpf::cty::c_uint,
+        http_minor: ::aya_ebpf::cty::c_uint,
+        http_major: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 4usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 4usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 16u8, {
@@ -7149,55 +7149,55 @@ pub struct ngx_http_script_engine_t {
 }
 impl ngx_http_script_engine_t {
     #[inline]
-    pub fn flushed(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn flushed(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_flushed(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_flushed(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn skip(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn skip(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_skip(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_skip(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn quote(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn quote(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_quote(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_quote(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn is_args(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn is_args(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_is_args(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_is_args(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn log(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn log(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_log(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_log(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
@@ -7205,11 +7205,11 @@ impl ngx_http_script_engine_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        flushed: ::aya_bpf::cty::c_uint,
-        skip: ::aya_bpf::cty::c_uint,
-        quote: ::aya_bpf::cty::c_uint,
-        is_args: ::aya_bpf::cty::c_uint,
-        log: ::aya_bpf::cty::c_uint,
+        flushed: ::aya_ebpf::cty::c_uint,
+        skip: ::aya_ebpf::cty::c_uint,
+        quote: ::aya_ebpf::cty::c_uint,
+        is_args: ::aya_ebpf::cty::c_uint,
+        log: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -7247,95 +7247,95 @@ pub struct ngx_http_script_compile_t {
     pub ncaptures: ngx_uint_t,
     pub captures_mask: ngx_uint_t,
     pub size: ngx_uint_t,
-    pub main: *mut ::aya_bpf::cty::c_void,
+    pub main: *mut ::aya_ebpf::cty::c_void,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
     pub __bindgen_padding_0: [u8; 7usize],
 }
 impl ngx_http_script_compile_t {
     #[inline]
-    pub fn compile_args(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn compile_args(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_compile_args(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_compile_args(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn complete_lengths(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn complete_lengths(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_complete_lengths(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_complete_lengths(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn complete_values(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn complete_values(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_complete_values(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_complete_values(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn zero(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn zero(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_zero(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_zero(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn conf_prefix(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn conf_prefix(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_conf_prefix(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_conf_prefix(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn root_prefix(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn root_prefix(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_root_prefix(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_root_prefix(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn dup_capture(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn dup_capture(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_dup_capture(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_dup_capture(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn args(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn args(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_args(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_args(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
@@ -7343,14 +7343,14 @@ impl ngx_http_script_compile_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        compile_args: ::aya_bpf::cty::c_uint,
-        complete_lengths: ::aya_bpf::cty::c_uint,
-        complete_values: ::aya_bpf::cty::c_uint,
-        zero: ::aya_bpf::cty::c_uint,
-        conf_prefix: ::aya_bpf::cty::c_uint,
-        root_prefix: ::aya_bpf::cty::c_uint,
-        dup_capture: ::aya_bpf::cty::c_uint,
-        args: ::aya_bpf::cty::c_uint,
+        compile_args: ::aya_ebpf::cty::c_uint,
+        complete_lengths: ::aya_ebpf::cty::c_uint,
+        complete_values: ::aya_ebpf::cty::c_uint,
+        zero: ::aya_ebpf::cty::c_uint,
+        conf_prefix: ::aya_ebpf::cty::c_uint,
+        root_prefix: ::aya_ebpf::cty::c_uint,
+        dup_capture: ::aya_ebpf::cty::c_uint,
+        args: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -7393,8 +7393,8 @@ impl ngx_http_script_compile_t {
 pub struct ngx_http_complex_value_t {
     pub value: ngx_str_t,
     pub flushes: *mut ngx_uint_t,
-    pub lengths: *mut ::aya_bpf::cty::c_void,
-    pub values: *mut ::aya_bpf::cty::c_void,
+    pub lengths: *mut ::aya_ebpf::cty::c_void,
+    pub values: *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -7408,33 +7408,33 @@ pub struct ngx_http_compile_complex_value_t {
 }
 impl ngx_http_compile_complex_value_t {
     #[inline]
-    pub fn zero(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn zero(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_zero(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_zero(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn conf_prefix(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn conf_prefix(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_conf_prefix(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_conf_prefix(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn root_prefix(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn root_prefix(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_root_prefix(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_root_prefix(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
@@ -7442,9 +7442,9 @@ impl ngx_http_compile_complex_value_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        zero: ::aya_bpf::cty::c_uint,
-        conf_prefix: ::aya_bpf::cty::c_uint,
-        root_prefix: ::aya_bpf::cty::c_uint,
+        zero: ::aya_ebpf::cty::c_uint,
+        conf_prefix: ::aya_ebpf::cty::c_uint,
+        root_prefix: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -7506,77 +7506,77 @@ pub struct ngx_http_script_regex_code_t {
 }
 impl ngx_http_script_regex_code_t {
     #[inline]
-    pub fn test(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn test(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_test(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_test(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn negative_test(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn negative_test(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_negative_test(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_negative_test(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn uri(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn uri(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_uri(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_uri(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn args(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn args(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_args(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_args(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn add_args(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn add_args(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_add_args(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_add_args(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn redirect(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn redirect(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_redirect(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_redirect(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn break_cycle(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn break_cycle(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_break_cycle(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_break_cycle(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
@@ -7584,13 +7584,13 @@ impl ngx_http_script_regex_code_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        test: ::aya_bpf::cty::c_uint,
-        negative_test: ::aya_bpf::cty::c_uint,
-        uri: ::aya_bpf::cty::c_uint,
-        args: ::aya_bpf::cty::c_uint,
-        add_args: ::aya_bpf::cty::c_uint,
-        redirect: ::aya_bpf::cty::c_uint,
-        break_cycle: ::aya_bpf::cty::c_uint,
+        test: ::aya_ebpf::cty::c_uint,
+        negative_test: ::aya_ebpf::cty::c_uint,
+        uri: ::aya_ebpf::cty::c_uint,
+        args: ::aya_ebpf::cty::c_uint,
+        add_args: ::aya_ebpf::cty::c_uint,
+        redirect: ::aya_ebpf::cty::c_uint,
+        break_cycle: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -7634,44 +7634,44 @@ pub struct ngx_http_script_regex_end_code_t {
 }
 impl ngx_http_script_regex_end_code_t {
     #[inline]
-    pub fn uri(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn uri(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_uri(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_uri(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn args(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn args(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_args(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_args(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn add_args(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn add_args(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_add_args(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_add_args(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn redirect(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn redirect(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_redirect(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_redirect(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
@@ -7679,10 +7679,10 @@ impl ngx_http_script_regex_end_code_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        uri: ::aya_bpf::cty::c_uint,
-        args: ::aya_bpf::cty::c_uint,
-        add_args: ::aya_bpf::cty::c_uint,
-        redirect: ::aya_bpf::cty::c_uint,
+        uri: ::aya_ebpf::cty::c_uint,
+        args: ::aya_ebpf::cty::c_uint,
+        add_args: ::aya_ebpf::cty::c_uint,
+        redirect: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -7725,7 +7725,7 @@ pub const ngx_http_script_file_op_e_ngx_http_script_file_exists: ngx_http_script
 pub const ngx_http_script_file_op_e_ngx_http_script_file_not_exists: ngx_http_script_file_op_e = 5;
 pub const ngx_http_script_file_op_e_ngx_http_script_file_exec: ngx_http_script_file_op_e = 6;
 pub const ngx_http_script_file_op_e_ngx_http_script_file_not_exec: ngx_http_script_file_op_e = 7;
-pub type ngx_http_script_file_op_e = ::aya_bpf::cty::c_uint;
+pub type ngx_http_script_file_op_e = ::aya_ebpf::cty::c_uint;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_http_script_file_code_t {
@@ -7737,7 +7737,7 @@ pub struct ngx_http_script_file_code_t {
 pub struct ngx_http_script_if_code_t {
     pub code: ngx_http_script_code_pt,
     pub next: usize,
-    pub loc_conf: *mut *mut ::aya_bpf::cty::c_void,
+    pub loc_conf: *mut *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -7773,8 +7773,8 @@ extern "C" {
     pub fn ngx_http_set_complex_value_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_http_test_predicates(
@@ -7786,8 +7786,8 @@ extern "C" {
     pub fn ngx_http_set_predicate_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_http_script_variables_count(value: *mut ngx_str_t) -> ngx_uint_t;
@@ -7799,9 +7799,9 @@ extern "C" {
     pub fn ngx_http_script_run(
         r: *mut ngx_http_request_t,
         value: *mut ngx_str_t,
-        code_lengths: *mut ::aya_bpf::cty::c_void,
+        code_lengths: *mut ::aya_ebpf::cty::c_void,
         reserved: size_t,
-        code_values: *mut ::aya_bpf::cty::c_void,
+        code_values: *mut ::aya_ebpf::cty::c_void,
     ) -> *mut u_char;
 }
 extern "C" {
@@ -7815,14 +7815,14 @@ extern "C" {
         pool: *mut ngx_pool_t,
         codes: *mut *mut ngx_array_t,
         size: size_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_http_script_add_code(
         codes: *mut ngx_array_t,
         size: size_t,
-        code: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_void;
+        code: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_http_script_copy_len_code(e: *mut ngx_http_script_engine_t) -> size_t;
@@ -7893,7 +7893,7 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_event_s {
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 3usize]>,
     pub handler: ngx_event_handler_pt,
@@ -7904,231 +7904,231 @@ pub struct ngx_event_s {
 }
 impl ngx_event_s {
     #[inline]
-    pub fn write(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn write(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_write(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_write(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn accept(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn accept(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_accept(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_accept(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn instance(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn instance(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_instance(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_instance(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn active(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn active(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_active(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_active(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn disabled(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn disabled(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_disabled(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_disabled(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn ready(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn ready(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_ready(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_ready(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn oneshot(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn oneshot(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_oneshot(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_oneshot(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn complete(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn complete(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_complete(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_complete(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn eof(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn eof(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_eof(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_eof(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn error(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn error(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_error(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_error(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn timedout(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn timedout(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_timedout(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_timedout(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn timer_set(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn timer_set(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_timer_set(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_timer_set(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn delayed(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn delayed(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_delayed(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_delayed(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(12usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn deferred_accept(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn deferred_accept(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(13usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_deferred_accept(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_deferred_accept(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(13usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn pending_eof(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn pending_eof(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(14usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_pending_eof(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_pending_eof(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(14usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn posted(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn posted(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(15usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_posted(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_posted(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(15usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn closed(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn closed(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(16usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_closed(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_closed(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(16usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn channel(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn channel(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(17usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_channel(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_channel(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(17usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn resolver(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn resolver(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(18usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_resolver(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_resolver(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(18usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn cancelable(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn cancelable(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(19usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_cancelable(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_cancelable(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(19usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn available(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn available(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_available(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_available(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(20usize, 1u8, val as u64)
@@ -8136,27 +8136,27 @@ impl ngx_event_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        write: ::aya_bpf::cty::c_uint,
-        accept: ::aya_bpf::cty::c_uint,
-        instance: ::aya_bpf::cty::c_uint,
-        active: ::aya_bpf::cty::c_uint,
-        disabled: ::aya_bpf::cty::c_uint,
-        ready: ::aya_bpf::cty::c_uint,
-        oneshot: ::aya_bpf::cty::c_uint,
-        complete: ::aya_bpf::cty::c_uint,
-        eof: ::aya_bpf::cty::c_uint,
-        error: ::aya_bpf::cty::c_uint,
-        timedout: ::aya_bpf::cty::c_uint,
-        timer_set: ::aya_bpf::cty::c_uint,
-        delayed: ::aya_bpf::cty::c_uint,
-        deferred_accept: ::aya_bpf::cty::c_uint,
-        pending_eof: ::aya_bpf::cty::c_uint,
-        posted: ::aya_bpf::cty::c_uint,
-        closed: ::aya_bpf::cty::c_uint,
-        channel: ::aya_bpf::cty::c_uint,
-        resolver: ::aya_bpf::cty::c_uint,
-        cancelable: ::aya_bpf::cty::c_uint,
-        available: ::aya_bpf::cty::c_uint,
+        write: ::aya_ebpf::cty::c_uint,
+        accept: ::aya_ebpf::cty::c_uint,
+        instance: ::aya_ebpf::cty::c_uint,
+        active: ::aya_ebpf::cty::c_uint,
+        disabled: ::aya_ebpf::cty::c_uint,
+        ready: ::aya_ebpf::cty::c_uint,
+        oneshot: ::aya_ebpf::cty::c_uint,
+        complete: ::aya_ebpf::cty::c_uint,
+        eof: ::aya_ebpf::cty::c_uint,
+        error: ::aya_ebpf::cty::c_uint,
+        timedout: ::aya_ebpf::cty::c_uint,
+        timer_set: ::aya_ebpf::cty::c_uint,
+        delayed: ::aya_ebpf::cty::c_uint,
+        deferred_accept: ::aya_ebpf::cty::c_uint,
+        pending_eof: ::aya_ebpf::cty::c_uint,
+        posted: ::aya_ebpf::cty::c_uint,
+        closed: ::aya_ebpf::cty::c_uint,
+        channel: ::aya_ebpf::cty::c_uint,
+        resolver: ::aya_ebpf::cty::c_uint,
+        cancelable: ::aya_ebpf::cty::c_uint,
+        available: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 3usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 3usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -8320,13 +8320,13 @@ pub struct ngx_event_conf_t {
 pub struct ngx_event_module_t {
     pub name: *mut ngx_str_t,
     pub create_conf: ::core::option::Option<
-        unsafe extern "C" fn(cycle: *mut ngx_cycle_t) -> *mut ::aya_bpf::cty::c_void,
+        unsafe extern "C" fn(cycle: *mut ngx_cycle_t) -> *mut ::aya_ebpf::cty::c_void,
     >,
     pub init_conf: ::core::option::Option<
         unsafe extern "C" fn(
             cycle: *mut ngx_cycle_t,
-            conf: *mut ::aya_bpf::cty::c_void,
-        ) -> *mut ::aya_bpf::cty::c_char,
+            conf: *mut ::aya_ebpf::cty::c_void,
+        ) -> *mut ::aya_ebpf::cty::c_char,
     >,
     pub actions: ngx_event_actions_t,
 }
@@ -8421,31 +8421,31 @@ pub type ngx_peer_connection_t = ngx_peer_connection_s;
 pub type ngx_event_get_peer_pt = ::core::option::Option<
     unsafe extern "C" fn(
         pc: *mut ngx_peer_connection_t,
-        data: *mut ::aya_bpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
     ) -> ngx_int_t,
 >;
 pub type ngx_event_free_peer_pt = ::core::option::Option<
     unsafe extern "C" fn(
         pc: *mut ngx_peer_connection_t,
-        data: *mut ::aya_bpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
         state: ngx_uint_t,
     ),
 >;
 pub type ngx_event_notify_peer_pt = ::core::option::Option<
     unsafe extern "C" fn(
         pc: *mut ngx_peer_connection_t,
-        data: *mut ::aya_bpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
         type_: ngx_uint_t,
     ),
 >;
 pub type ngx_event_set_peer_session_pt = ::core::option::Option<
     unsafe extern "C" fn(
         pc: *mut ngx_peer_connection_t,
-        data: *mut ::aya_bpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
     ) -> ngx_int_t,
 >;
 pub type ngx_event_save_peer_session_pt = ::core::option::Option<
-    unsafe extern "C" fn(pc: *mut ngx_peer_connection_t, data: *mut ::aya_bpf::cty::c_void),
+    unsafe extern "C" fn(pc: *mut ngx_peer_connection_t, data: *mut ::aya_ebpf::cty::c_void),
 >;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -8459,12 +8459,12 @@ pub struct ngx_peer_connection_s {
     pub get: ngx_event_get_peer_pt,
     pub free: ngx_event_free_peer_pt,
     pub notify: ngx_event_notify_peer_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
     pub set_session: ngx_event_set_peer_session_pt,
     pub save_session: ngx_event_save_peer_session_pt,
     pub local: *mut ngx_addr_t,
-    pub type_: ::aya_bpf::cty::c_int,
-    pub rcvbuf: ::aya_bpf::cty::c_int,
+    pub type_: ::aya_ebpf::cty::c_int,
+    pub rcvbuf: ::aya_ebpf::cty::c_int,
     pub log: *mut ngx_log_t,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
@@ -8472,33 +8472,33 @@ pub struct ngx_peer_connection_s {
 }
 impl ngx_peer_connection_s {
     #[inline]
-    pub fn cached(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn cached(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_cached(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_cached(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn transparent(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn transparent(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_transparent(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_transparent(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn log_error(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn log_error(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_log_error(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_log_error(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 2u8, val as u64)
@@ -8506,9 +8506,9 @@ impl ngx_peer_connection_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        cached: ::aya_bpf::cty::c_uint,
-        transparent: ::aya_bpf::cty::c_uint,
-        log_error: ::aya_bpf::cty::c_uint,
+        cached: ::aya_ebpf::cty::c_uint,
+        transparent: ::aya_ebpf::cty::c_uint,
+        log_error: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -8532,7 +8532,7 @@ extern "C" {
 extern "C" {
     pub fn ngx_event_get_peer(
         pc: *mut ngx_peer_connection_t,
-        data: *mut ::aya_bpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
     ) -> ngx_int_t;
 }
 pub type ngx_event_pipe_t = ngx_event_pipe_s;
@@ -8540,7 +8540,7 @@ pub type ngx_event_pipe_input_filter_pt = ::core::option::Option<
     unsafe extern "C" fn(p: *mut ngx_event_pipe_t, buf: *mut ngx_buf_t) -> ngx_int_t,
 >;
 pub type ngx_event_pipe_output_filter_pt = ::core::option::Option<
-    unsafe extern "C" fn(data: *mut ::aya_bpf::cty::c_void, chain: *mut ngx_chain_t) -> ngx_int_t,
+    unsafe extern "C" fn(data: *mut ::aya_ebpf::cty::c_void, chain: *mut ngx_chain_t) -> ngx_int_t,
 >;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -8555,13 +8555,13 @@ pub struct ngx_event_pipe_s {
     pub free: *mut ngx_chain_t,
     pub busy: *mut ngx_chain_t,
     pub input_filter: ngx_event_pipe_input_filter_pt,
-    pub input_ctx: *mut ::aya_bpf::cty::c_void,
+    pub input_ctx: *mut ::aya_ebpf::cty::c_void,
     pub output_filter: ngx_event_pipe_output_filter_pt,
-    pub output_ctx: *mut ::aya_bpf::cty::c_void,
+    pub output_ctx: *mut ::aya_ebpf::cty::c_void,
     pub thread_handler: ::core::option::Option<
         unsafe extern "C" fn(task: *mut ngx_thread_task_t, file: *mut ngx_file_t) -> ngx_int_t,
     >,
-    pub thread_ctx: *mut ::aya_bpf::cty::c_void,
+    pub thread_ctx: *mut ::aya_ebpf::cty::c_void,
     pub thread_task: *mut ngx_thread_task_t,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize]>,
@@ -8584,136 +8584,136 @@ pub struct ngx_event_pipe_s {
     pub limit_rate: size_t,
     pub start_sec: time_t,
     pub temp_file: *mut ngx_temp_file_t,
-    pub num: ::aya_bpf::cty::c_int,
+    pub num: ::aya_ebpf::cty::c_int,
 }
 impl ngx_event_pipe_s {
     #[inline]
-    pub fn read(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn read(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_read(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_read(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn cacheable(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn cacheable(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_cacheable(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_cacheable(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn single_buf(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn single_buf(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_single_buf(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_single_buf(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn free_bufs(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn free_bufs(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_free_bufs(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_free_bufs(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn upstream_done(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn upstream_done(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_upstream_done(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_upstream_done(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn upstream_error(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn upstream_error(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_upstream_error(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_upstream_error(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn upstream_eof(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn upstream_eof(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_upstream_eof(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_upstream_eof(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn upstream_blocked(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn upstream_blocked(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_upstream_blocked(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_upstream_blocked(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn downstream_done(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn downstream_done(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_downstream_done(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_downstream_done(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn downstream_error(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn downstream_error(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_downstream_error(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_downstream_error(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn cyclic_temp_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn cyclic_temp_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_cyclic_temp_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_cyclic_temp_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn aio(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn aio(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_aio(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_aio(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(11usize, 1u8, val as u64)
@@ -8721,18 +8721,18 @@ impl ngx_event_pipe_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        read: ::aya_bpf::cty::c_uint,
-        cacheable: ::aya_bpf::cty::c_uint,
-        single_buf: ::aya_bpf::cty::c_uint,
-        free_bufs: ::aya_bpf::cty::c_uint,
-        upstream_done: ::aya_bpf::cty::c_uint,
-        upstream_error: ::aya_bpf::cty::c_uint,
-        upstream_eof: ::aya_bpf::cty::c_uint,
-        upstream_blocked: ::aya_bpf::cty::c_uint,
-        downstream_done: ::aya_bpf::cty::c_uint,
-        downstream_error: ::aya_bpf::cty::c_uint,
-        cyclic_temp_file: ::aya_bpf::cty::c_uint,
-        aio: ::aya_bpf::cty::c_uint,
+        read: ::aya_ebpf::cty::c_uint,
+        cacheable: ::aya_ebpf::cty::c_uint,
+        single_buf: ::aya_ebpf::cty::c_uint,
+        free_bufs: ::aya_ebpf::cty::c_uint,
+        upstream_done: ::aya_ebpf::cty::c_uint,
+        upstream_error: ::aya_ebpf::cty::c_uint,
+        upstream_eof: ::aya_ebpf::cty::c_uint,
+        upstream_blocked: ::aya_ebpf::cty::c_uint,
+        downstream_done: ::aya_ebpf::cty::c_uint,
+        downstream_error: ::aya_ebpf::cty::c_uint,
+        cyclic_temp_file: ::aya_ebpf::cty::c_uint,
+        aio: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -8830,7 +8830,7 @@ pub type ngx_http_upstream_init_peer_pt = ::core::option::Option<
 pub struct ngx_http_upstream_peer_t {
     pub init_upstream: ngx_http_upstream_init_pt,
     pub init: ngx_http_upstream_init_peer_pt,
-    pub data: *mut ::aya_bpf::cty::c_void,
+    pub data: *mut ::aya_ebpf::cty::c_void,
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -8850,18 +8850,18 @@ pub struct ngx_http_upstream_server_t {
 }
 impl ngx_http_upstream_server_t {
     #[inline]
-    pub fn backup(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn backup(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_backup(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_backup(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn new_bitfield_1(backup: ::aya_bpf::cty::c_uint) -> __BindgenBitfieldUnit<[u8; 1usize]> {
+    pub fn new_bitfield_1(backup: ::aya_ebpf::cty::c_uint) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
             let backup: u32 = unsafe { ::core::mem::transmute(backup) };
@@ -8874,7 +8874,7 @@ impl ngx_http_upstream_server_t {
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_http_upstream_srv_conf_s {
     pub peer: ngx_http_upstream_peer_t,
-    pub srv_conf: *mut *mut ::aya_bpf::cty::c_void,
+    pub srv_conf: *mut *mut ::aya_ebpf::cty::c_void,
     pub servers: *mut ngx_array_t,
     pub flags: ngx_uint_t,
     pub host: ngx_str_t,
@@ -8956,44 +8956,44 @@ pub struct ngx_http_upstream_conf_t {
 }
 impl ngx_http_upstream_conf_t {
     #[inline]
-    pub fn cache(&self) -> ::aya_bpf::cty::c_int {
+    pub fn cache(&self) -> ::aya_ebpf::cty::c_int {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_cache(&mut self, val: ::aya_bpf::cty::c_int) {
+    pub fn set_cache(&mut self, val: ::aya_ebpf::cty::c_int) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn store(&self) -> ::aya_bpf::cty::c_int {
+    pub fn store(&self) -> ::aya_ebpf::cty::c_int {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_store(&mut self, val: ::aya_bpf::cty::c_int) {
+    pub fn set_store(&mut self, val: ::aya_ebpf::cty::c_int) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn intercept_404(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn intercept_404(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_intercept_404(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_intercept_404(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn change_buffering(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn change_buffering(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_change_buffering(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_change_buffering(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
@@ -9001,10 +9001,10 @@ impl ngx_http_upstream_conf_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        cache: ::aya_bpf::cty::c_int,
-        store: ::aya_bpf::cty::c_int,
-        intercept_404: ::aya_bpf::cty::c_uint,
-        change_buffering: ::aya_bpf::cty::c_uint,
+        cache: ::aya_ebpf::cty::c_int,
+        store: ::aya_ebpf::cty::c_int,
+        intercept_404: ::aya_ebpf::cty::c_uint,
+        change_buffering: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 2u8, {
@@ -9070,22 +9070,22 @@ pub struct ngx_http_upstream_headers_in_t {
 }
 impl ngx_http_upstream_headers_in_t {
     #[inline]
-    pub fn connection_close(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn connection_close(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_connection_close(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_connection_close(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn chunked(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn chunked(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_chunked(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_chunked(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -9093,8 +9093,8 @@ impl ngx_http_upstream_headers_in_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        connection_close: ::aya_bpf::cty::c_uint,
-        chunked: ::aya_bpf::cty::c_uint,
+        connection_close: ::aya_ebpf::cty::c_uint,
+        chunked: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -9149,11 +9149,11 @@ pub struct ngx_http_upstream_s {
     pub busy_bufs: *mut ngx_chain_t,
     pub free_bufs: *mut ngx_chain_t,
     pub input_filter_init:
-        ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_bpf::cty::c_void) -> ngx_int_t>,
+        ::core::option::Option<unsafe extern "C" fn(data: *mut ::aya_ebpf::cty::c_void) -> ngx_int_t>,
     pub input_filter: ::core::option::Option<
-        unsafe extern "C" fn(data: *mut ::aya_bpf::cty::c_void, bytes: ssize_t) -> ngx_int_t,
+        unsafe extern "C" fn(data: *mut ::aya_ebpf::cty::c_void, bytes: ssize_t) -> ngx_int_t,
     >,
-    pub input_filter_ctx: *mut ::aya_bpf::cty::c_void,
+    pub input_filter_ctx: *mut ::aya_ebpf::cty::c_void,
     pub create_key:
         ::core::option::Option<unsafe extern "C" fn(r: *mut ngx_http_request_t) -> ngx_int_t>,
     pub create_request:
@@ -9188,121 +9188,121 @@ pub struct ngx_http_upstream_s {
 }
 impl ngx_http_upstream_s {
     #[inline]
-    pub fn store(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn store(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_store(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_store(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn cacheable(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn cacheable(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_cacheable(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_cacheable(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn accel(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn accel(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_accel(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_accel(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn ssl(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn ssl(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_ssl(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_ssl(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn cache_status(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn cache_status(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 3u8) as u32) }
     }
     #[inline]
-    pub fn set_cache_status(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_cache_status(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 3u8, val as u64)
         }
     }
     #[inline]
-    pub fn buffering(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn buffering(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_buffering(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_buffering(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn keepalive(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn keepalive(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_keepalive(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_keepalive(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn upgrade(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn upgrade(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_upgrade(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_upgrade(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_sent(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_sent(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_sent(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_sent(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn request_body_sent(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn request_body_sent(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_request_body_sent(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_request_body_sent(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(11usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn header_sent(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn header_sent(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(12usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_header_sent(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_header_sent(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(12usize, 1u8, val as u64)
@@ -9310,17 +9310,17 @@ impl ngx_http_upstream_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        store: ::aya_bpf::cty::c_uint,
-        cacheable: ::aya_bpf::cty::c_uint,
-        accel: ::aya_bpf::cty::c_uint,
-        ssl: ::aya_bpf::cty::c_uint,
-        cache_status: ::aya_bpf::cty::c_uint,
-        buffering: ::aya_bpf::cty::c_uint,
-        keepalive: ::aya_bpf::cty::c_uint,
-        upgrade: ::aya_bpf::cty::c_uint,
-        request_sent: ::aya_bpf::cty::c_uint,
-        request_body_sent: ::aya_bpf::cty::c_uint,
-        header_sent: ::aya_bpf::cty::c_uint,
+        store: ::aya_ebpf::cty::c_uint,
+        cacheable: ::aya_ebpf::cty::c_uint,
+        accel: ::aya_ebpf::cty::c_uint,
+        ssl: ::aya_ebpf::cty::c_uint,
+        cache_status: ::aya_ebpf::cty::c_uint,
+        buffering: ::aya_ebpf::cty::c_uint,
+        keepalive: ::aya_ebpf::cty::c_uint,
+        upgrade: ::aya_ebpf::cty::c_uint,
+        request_sent: ::aya_ebpf::cty::c_uint,
+        request_body_sent: ::aya_ebpf::cty::c_uint,
+        header_sent: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -9400,15 +9400,15 @@ extern "C" {
     pub fn ngx_http_upstream_bind_set_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_http_upstream_param_set_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_http_upstream_hide_headers_hash(
@@ -9449,8 +9449,8 @@ pub struct ngx_http_upstream_rr_peer_s {
     pub slow_start: ngx_msec_t,
     pub start_time: ngx_msec_t,
     pub down: ngx_uint_t,
-    pub ssl_session: *mut ::aya_bpf::cty::c_void,
-    pub ssl_session_len: ::aya_bpf::cty::c_int,
+    pub ssl_session: *mut ::aya_ebpf::cty::c_void,
+    pub ssl_session_len: ::aya_ebpf::cty::c_int,
     pub lock: ngx_atomic_t,
     pub next: *mut ngx_http_upstream_rr_peer_t,
     pub spare: [u64; 32usize],
@@ -9472,22 +9472,22 @@ pub struct ngx_http_upstream_rr_peers_s {
 }
 impl ngx_http_upstream_rr_peers_s {
     #[inline]
-    pub fn single(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn single(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_single(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_single(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn weighted(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn weighted(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_weighted(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_weighted(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -9495,8 +9495,8 @@ impl ngx_http_upstream_rr_peers_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        single: ::aya_bpf::cty::c_uint,
-        weighted: ::aya_bpf::cty::c_uint,
+        single: ::aya_ebpf::cty::c_uint,
+        weighted: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -9540,13 +9540,13 @@ extern "C" {
 extern "C" {
     pub fn ngx_http_upstream_get_round_robin_peer(
         pc: *mut ngx_peer_connection_t,
-        data: *mut ::aya_bpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
     ) -> ngx_int_t;
 }
 extern "C" {
     pub fn ngx_http_upstream_free_round_robin_peer(
         pc: *mut ngx_peer_connection_t,
-        data: *mut ::aya_bpf::cty::c_void,
+        data: *mut ::aya_ebpf::cty::c_void,
         state: ngx_uint_t,
     );
 }
@@ -9565,132 +9565,132 @@ pub struct ngx_http_listen_opt_t {
     pub socklen: socklen_t,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize]>,
-    pub backlog: ::aya_bpf::cty::c_int,
-    pub rcvbuf: ::aya_bpf::cty::c_int,
-    pub sndbuf: ::aya_bpf::cty::c_int,
-    pub fastopen: ::aya_bpf::cty::c_int,
-    pub tcp_keepidle: ::aya_bpf::cty::c_int,
-    pub tcp_keepintvl: ::aya_bpf::cty::c_int,
-    pub tcp_keepcnt: ::aya_bpf::cty::c_int,
+    pub backlog: ::aya_ebpf::cty::c_int,
+    pub rcvbuf: ::aya_ebpf::cty::c_int,
+    pub sndbuf: ::aya_ebpf::cty::c_int,
+    pub fastopen: ::aya_ebpf::cty::c_int,
+    pub tcp_keepidle: ::aya_ebpf::cty::c_int,
+    pub tcp_keepintvl: ::aya_ebpf::cty::c_int,
+    pub tcp_keepcnt: ::aya_ebpf::cty::c_int,
     pub addr: [u_char; 114usize],
 }
 impl ngx_http_listen_opt_t {
     #[inline]
-    pub fn set(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn set(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_set(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_set(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn default_server(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn default_server(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_default_server(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_default_server(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn bind(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn bind(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_bind(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_bind(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn wildcard(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn wildcard(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_wildcard(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_wildcard(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn ssl(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn ssl(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_ssl(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_ssl(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn http2(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn http2(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_http2(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_http2(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn ipv6only(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn ipv6only(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_ipv6only(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_ipv6only(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn deferred_accept(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn deferred_accept(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_deferred_accept(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_deferred_accept(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn reuseport(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn reuseport(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_reuseport(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_reuseport(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn so_keepalive(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn so_keepalive(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_so_keepalive(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_so_keepalive(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn proxy_protocol(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn proxy_protocol(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_proxy_protocol(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_proxy_protocol(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(11usize, 1u8, val as u64)
@@ -9698,17 +9698,17 @@ impl ngx_http_listen_opt_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        set: ::aya_bpf::cty::c_uint,
-        default_server: ::aya_bpf::cty::c_uint,
-        bind: ::aya_bpf::cty::c_uint,
-        wildcard: ::aya_bpf::cty::c_uint,
-        ssl: ::aya_bpf::cty::c_uint,
-        http2: ::aya_bpf::cty::c_uint,
-        ipv6only: ::aya_bpf::cty::c_uint,
-        deferred_accept: ::aya_bpf::cty::c_uint,
-        reuseport: ::aya_bpf::cty::c_uint,
-        so_keepalive: ::aya_bpf::cty::c_uint,
-        proxy_protocol: ::aya_bpf::cty::c_uint,
+        set: ::aya_ebpf::cty::c_uint,
+        default_server: ::aya_ebpf::cty::c_uint,
+        bind: ::aya_ebpf::cty::c_uint,
+        wildcard: ::aya_ebpf::cty::c_uint,
+        ssl: ::aya_ebpf::cty::c_uint,
+        http2: ::aya_ebpf::cty::c_uint,
+        ipv6only: ::aya_ebpf::cty::c_uint,
+        deferred_accept: ::aya_ebpf::cty::c_uint,
+        reuseport: ::aya_ebpf::cty::c_uint,
+        so_keepalive: ::aya_ebpf::cty::c_uint,
+        proxy_protocol: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -9769,7 +9769,7 @@ pub const ngx_http_phases_NGX_HTTP_POST_ACCESS_PHASE: ngx_http_phases = 7;
 pub const ngx_http_phases_NGX_HTTP_PRECONTENT_PHASE: ngx_http_phases = 8;
 pub const ngx_http_phases_NGX_HTTP_CONTENT_PHASE: ngx_http_phases = 9;
 pub const ngx_http_phases_NGX_HTTP_LOG_PHASE: ngx_http_phases = 10;
-pub type ngx_http_phases = ::aya_bpf::cty::c_uint;
+pub type ngx_http_phases = ::aya_ebpf::cty::c_uint;
 pub type ngx_http_phase_handler_t = ngx_http_phase_handler_s;
 pub type ngx_http_phase_handler_pt = ::core::option::Option<
     unsafe extern "C" fn(
@@ -9834,22 +9834,22 @@ pub struct ngx_http_core_srv_conf_t {
 }
 impl ngx_http_core_srv_conf_t {
     #[inline]
-    pub fn listen(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn listen(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_listen(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_listen(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn captures(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn captures(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_captures(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_captures(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -9857,8 +9857,8 @@ impl ngx_http_core_srv_conf_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        listen: ::aya_bpf::cty::c_uint,
-        captures: ::aya_bpf::cty::c_uint,
+        listen: ::aya_ebpf::cty::c_uint,
+        captures: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -9897,33 +9897,33 @@ pub struct ngx_http_addr_conf_s {
 }
 impl ngx_http_addr_conf_s {
     #[inline]
-    pub fn ssl(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn ssl(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_ssl(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_ssl(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn http2(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn http2(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_http2(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_http2(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn proxy_protocol(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn proxy_protocol(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_proxy_protocol(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_proxy_protocol(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
@@ -9931,9 +9931,9 @@ impl ngx_http_addr_conf_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        ssl: ::aya_bpf::cty::c_uint,
-        http2: ::aya_bpf::cty::c_uint,
-        proxy_protocol: ::aya_bpf::cty::c_uint,
+        ssl: ::aya_ebpf::cty::c_uint,
+        http2: ::aya_ebpf::cty::c_uint,
+        proxy_protocol: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -9966,7 +9966,7 @@ pub struct ngx_http_in6_addr_t {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ngx_http_port_t {
-    pub addrs: *mut ::aya_bpf::cty::c_void,
+    pub addrs: *mut ::aya_ebpf::cty::c_void,
     pub naddrs: ngx_uint_t,
 }
 #[repr(C)]
@@ -10005,9 +10005,9 @@ pub struct ngx_http_core_loc_conf_s {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 2usize]>,
     pub static_locations: *mut ngx_http_location_tree_node_t,
     pub regex_locations: *mut *mut ngx_http_core_loc_conf_t,
-    pub loc_conf: *mut *mut ::aya_bpf::cty::c_void,
+    pub loc_conf: *mut *mut ::aya_ebpf::cty::c_void,
     pub limit_except: u32,
-    pub limit_except_loc_conf: *mut *mut ::aya_bpf::cty::c_void,
+    pub limit_except_loc_conf: *mut *mut ::aya_ebpf::cty::c_void,
     pub handler: ngx_http_handler_pt,
     pub alias: size_t,
     pub root: ngx_str_t,
@@ -10083,88 +10083,88 @@ pub struct ngx_http_core_loc_conf_s {
 }
 impl ngx_http_core_loc_conf_s {
     #[inline]
-    pub fn noname(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn noname(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_noname(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_noname(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn lmt_excpt(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn lmt_excpt(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_lmt_excpt(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_lmt_excpt(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn named(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn named(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_named(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_named(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn exact_match(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn exact_match(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_exact_match(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_exact_match(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn noregex(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn noregex(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_noregex(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_noregex(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn auto_redirect(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn auto_redirect(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_auto_redirect(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_auto_redirect(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn gzip_disable_msie6(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn gzip_disable_msie6(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_gzip_disable_msie6(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_gzip_disable_msie6(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn gzip_disable_degradation(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn gzip_disable_degradation(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_gzip_disable_degradation(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_gzip_disable_degradation(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 2u8, val as u64)
@@ -10172,14 +10172,14 @@ impl ngx_http_core_loc_conf_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        noname: ::aya_bpf::cty::c_uint,
-        lmt_excpt: ::aya_bpf::cty::c_uint,
-        named: ::aya_bpf::cty::c_uint,
-        exact_match: ::aya_bpf::cty::c_uint,
-        noregex: ::aya_bpf::cty::c_uint,
-        auto_redirect: ::aya_bpf::cty::c_uint,
-        gzip_disable_msie6: ::aya_bpf::cty::c_uint,
-        gzip_disable_degradation: ::aya_bpf::cty::c_uint,
+        noname: ::aya_ebpf::cty::c_uint,
+        lmt_excpt: ::aya_ebpf::cty::c_uint,
+        named: ::aya_ebpf::cty::c_uint,
+        exact_match: ::aya_ebpf::cty::c_uint,
+        noregex: ::aya_ebpf::cty::c_uint,
+        auto_redirect: ::aya_ebpf::cty::c_uint,
+        gzip_disable_msie6: ::aya_ebpf::cty::c_uint,
+        gzip_disable_degradation: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -10290,7 +10290,7 @@ extern "C" {
     pub fn ngx_http_test_content_type(
         r: *mut ngx_http_request_t,
         types_hash: *mut ngx_hash_t,
-    ) -> *mut ::aya_bpf::cty::c_void;
+    ) -> *mut ::aya_ebpf::cty::c_void;
 }
 extern "C" {
     pub fn ngx_http_set_content_type(r: *mut ngx_http_request_t) -> ngx_int_t;
@@ -10388,7 +10388,7 @@ extern "C" {
         headers: *mut ngx_array_t,
         value: *mut ngx_str_t,
         proxies: *mut ngx_array_t,
-        recursive: ::aya_bpf::cty::c_int,
+        recursive: ::aya_ebpf::cty::c_int,
     ) -> ngx_int_t;
 }
 extern "C" {
@@ -10423,88 +10423,88 @@ pub struct ngx_http_file_cache_node_t {
 }
 impl ngx_http_file_cache_node_t {
     #[inline]
-    pub fn count(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn count(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 20u8) as u32) }
     }
     #[inline]
-    pub fn set_count(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_count(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 20u8, val as u64)
         }
     }
     #[inline]
-    pub fn uses(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn uses(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(20usize, 10u8) as u32) }
     }
     #[inline]
-    pub fn set_uses(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_uses(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(20usize, 10u8, val as u64)
         }
     }
     #[inline]
-    pub fn valid_msec(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn valid_msec(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(32usize, 10u8) as u32) }
     }
     #[inline]
-    pub fn set_valid_msec(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_valid_msec(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(32usize, 10u8, val as u64)
         }
     }
     #[inline]
-    pub fn error(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn error(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(42usize, 10u8) as u32) }
     }
     #[inline]
-    pub fn set_error(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_error(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(42usize, 10u8, val as u64)
         }
     }
     #[inline]
-    pub fn exists(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn exists(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(52usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_exists(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_exists(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(52usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn updating(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn updating(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(53usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_updating(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_updating(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(53usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn deleting(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn deleting(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(54usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_deleting(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_deleting(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(54usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn purged(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn purged(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(55usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_purged(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_purged(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(55usize, 1u8, val as u64)
@@ -10512,14 +10512,14 @@ impl ngx_http_file_cache_node_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        count: ::aya_bpf::cty::c_uint,
-        uses: ::aya_bpf::cty::c_uint,
-        valid_msec: ::aya_bpf::cty::c_uint,
-        error: ::aya_bpf::cty::c_uint,
-        exists: ::aya_bpf::cty::c_uint,
-        updating: ::aya_bpf::cty::c_uint,
-        deleting: ::aya_bpf::cty::c_uint,
-        purged: ::aya_bpf::cty::c_uint,
+        count: ::aya_ebpf::cty::c_uint,
+        uses: ::aya_ebpf::cty::c_uint,
+        valid_msec: ::aya_ebpf::cty::c_uint,
+        error: ::aya_ebpf::cty::c_uint,
+        exists: ::aya_ebpf::cty::c_uint,
+        updating: ::aya_ebpf::cty::c_uint,
+        deleting: ::aya_ebpf::cty::c_uint,
+        purged: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 7usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 7usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 20u8, {
@@ -10597,132 +10597,132 @@ pub struct ngx_http_cache_s {
 }
 impl ngx_http_cache_s {
     #[inline]
-    pub fn lock(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn lock(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_lock(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_lock(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn waiting(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn waiting(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_waiting(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_waiting(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn updated(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn updated(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_updated(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_updated(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn updating(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn updating(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_updating(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_updating(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn exists(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn exists(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_exists(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_exists(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn temp_file(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn temp_file(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_temp_file(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_temp_file(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn purged(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn purged(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_purged(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_purged(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn reading(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn reading(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(7usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_reading(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_reading(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(7usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn secondary(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn secondary(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(8usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_secondary(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_secondary(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(8usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn background(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn background(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(9usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_background(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_background(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(9usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn stale_updating(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn stale_updating(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(10usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_stale_updating(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_stale_updating(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(10usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn stale_error(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn stale_error(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(11usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_stale_error(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_stale_error(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(11usize, 1u8, val as u64)
@@ -10730,18 +10730,18 @@ impl ngx_http_cache_s {
     }
     #[inline]
     pub fn new_bitfield_1(
-        lock: ::aya_bpf::cty::c_uint,
-        waiting: ::aya_bpf::cty::c_uint,
-        updated: ::aya_bpf::cty::c_uint,
-        updating: ::aya_bpf::cty::c_uint,
-        exists: ::aya_bpf::cty::c_uint,
-        temp_file: ::aya_bpf::cty::c_uint,
-        purged: ::aya_bpf::cty::c_uint,
-        reading: ::aya_bpf::cty::c_uint,
-        secondary: ::aya_bpf::cty::c_uint,
-        background: ::aya_bpf::cty::c_uint,
-        stale_updating: ::aya_bpf::cty::c_uint,
-        stale_error: ::aya_bpf::cty::c_uint,
+        lock: ::aya_ebpf::cty::c_uint,
+        waiting: ::aya_ebpf::cty::c_uint,
+        updated: ::aya_ebpf::cty::c_uint,
+        updating: ::aya_ebpf::cty::c_uint,
+        exists: ::aya_ebpf::cty::c_uint,
+        temp_file: ::aya_ebpf::cty::c_uint,
+        purged: ::aya_ebpf::cty::c_uint,
+        reading: ::aya_ebpf::cty::c_uint,
+        secondary: ::aya_ebpf::cty::c_uint,
+        background: ::aya_ebpf::cty::c_uint,
+        stale_updating: ::aya_ebpf::cty::c_uint,
+        stale_error: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 2usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 2usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -10884,15 +10884,15 @@ extern "C" {
     pub fn ngx_http_file_cache_set_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_http_file_cache_valid_set_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub static mut ngx_http_cache_status: [ngx_str_t; 0usize];
@@ -10928,66 +10928,66 @@ pub struct ngx_http_ssi_ctx_t {
     pub variables: *mut ngx_list_t,
     pub blocks: *mut ngx_array_t,
     pub ncaptures: ngx_uint_t,
-    pub captures: *mut ::aya_bpf::cty::c_int,
+    pub captures: *mut ::aya_ebpf::cty::c_int,
     pub captures_data: *mut u_char,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
     pub wait: *mut ngx_http_request_t,
-    pub value_buf: *mut ::aya_bpf::cty::c_void,
+    pub value_buf: *mut ::aya_ebpf::cty::c_void,
     pub timefmt: ngx_str_t,
     pub errmsg: ngx_str_t,
 }
 impl ngx_http_ssi_ctx_t {
     #[inline]
-    pub fn conditional(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn conditional(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_conditional(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_conditional(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn encoding(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn encoding(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_encoding(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_encoding(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn block(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn block(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(4usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_block(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_block(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn output(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn output(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(5usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_output(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_output(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn output_chosen(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn output_chosen(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(6usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_output_chosen(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_output_chosen(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(6usize, 1u8, val as u64)
@@ -10995,11 +10995,11 @@ impl ngx_http_ssi_ctx_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        conditional: ::aya_bpf::cty::c_uint,
-        encoding: ::aya_bpf::cty::c_uint,
-        block: ::aya_bpf::cty::c_uint,
-        output: ::aya_bpf::cty::c_uint,
-        output_chosen: ::aya_bpf::cty::c_uint,
+        conditional: ::aya_ebpf::cty::c_uint,
+        encoding: ::aya_ebpf::cty::c_uint,
+        block: ::aya_ebpf::cty::c_uint,
+        output: ::aya_ebpf::cty::c_uint,
+        output_chosen: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 2u8, {
@@ -11043,22 +11043,22 @@ pub struct ngx_http_ssi_param_t {
 }
 impl ngx_http_ssi_param_t {
     #[inline]
-    pub fn mandatory(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn mandatory(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_mandatory(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_mandatory(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn multiple(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn multiple(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(1usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_multiple(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_multiple(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(1usize, 1u8, val as u64)
@@ -11066,8 +11066,8 @@ impl ngx_http_ssi_param_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        mandatory: ::aya_bpf::cty::c_uint,
-        multiple: ::aya_bpf::cty::c_uint,
+        mandatory: ::aya_ebpf::cty::c_uint,
+        multiple: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 1u8, {
@@ -11093,33 +11093,33 @@ pub struct ngx_http_ssi_command_t {
 }
 impl ngx_http_ssi_command_t {
     #[inline]
-    pub fn conditional(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn conditional(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u32) }
     }
     #[inline]
-    pub fn set_conditional(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_conditional(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(0usize, 2u8, val as u64)
         }
     }
     #[inline]
-    pub fn block(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn block(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(2usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_block(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_block(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(2usize, 1u8, val as u64)
         }
     }
     #[inline]
-    pub fn flush(&self) -> ::aya_bpf::cty::c_uint {
+    pub fn flush(&self) -> ::aya_ebpf::cty::c_uint {
         unsafe { ::core::mem::transmute(self._bitfield_1.get(3usize, 1u8) as u32) }
     }
     #[inline]
-    pub fn set_flush(&mut self, val: ::aya_bpf::cty::c_uint) {
+    pub fn set_flush(&mut self, val: ::aya_ebpf::cty::c_uint) {
         unsafe {
             let val: u32 = ::core::mem::transmute(val);
             self._bitfield_1.set(3usize, 1u8, val as u64)
@@ -11127,9 +11127,9 @@ impl ngx_http_ssi_command_t {
     }
     #[inline]
     pub fn new_bitfield_1(
-        conditional: ::aya_bpf::cty::c_uint,
-        block: ::aya_bpf::cty::c_uint,
-        flush: ::aya_bpf::cty::c_uint,
+        conditional: ::aya_ebpf::cty::c_uint,
+        block: ::aya_ebpf::cty::c_uint,
+        flush: ::aya_ebpf::cty::c_uint,
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 2u8, {
@@ -11349,8 +11349,8 @@ extern "C" {
     pub fn ngx_http_types_slot(
         cf: *mut ngx_conf_t,
         cmd: *mut ngx_command_t,
-        conf: *mut ::aya_bpf::cty::c_void,
-    ) -> *mut ::aya_bpf::cty::c_char;
+        conf: *mut ::aya_ebpf::cty::c_void,
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_http_merge_types(
@@ -11360,7 +11360,7 @@ extern "C" {
         prev_keys: *mut *mut ngx_array_t,
         prev_types_hash: *mut ngx_hash_t,
         default_types: *mut ngx_str_t,
-    ) -> *mut ::aya_bpf::cty::c_char;
+    ) -> *mut ::aya_ebpf::cty::c_char;
 }
 extern "C" {
     pub fn ngx_http_set_default_types(
@@ -11393,8 +11393,8 @@ pub type __builtin_va_list = [__va_list_tag; 1usize];
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct __va_list_tag {
-    pub gp_offset: ::aya_bpf::cty::c_uint,
-    pub fp_offset: ::aya_bpf::cty::c_uint,
-    pub overflow_arg_area: *mut ::aya_bpf::cty::c_void,
-    pub reg_save_area: *mut ::aya_bpf::cty::c_void,
+    pub gp_offset: ::aya_ebpf::cty::c_uint,
+    pub fp_offset: ::aya_ebpf::cty::c_uint,
+    pub overflow_arg_area: *mut ::aya_ebpf::cty::c_void,
+    pub reg_save_area: *mut ::aya_ebpf::cty::c_void,
 }

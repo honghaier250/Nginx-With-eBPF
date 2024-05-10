@@ -9,12 +9,13 @@ mod bindings;
 
 use core::{cmp};
 use aya_log_ebpf::info;
+
 use bindings::{
     ngx_http_request_t,
     NGX_HTTP_MODULE
 };
 
-use aya_bpf::{
+use aya_ebpf::{
     macros::{uprobe, map},
     programs::ProbeContext,
     helpers::*,
@@ -28,7 +29,7 @@ static STACK_TRACES: StackTrace = StackTrace::with_max_entries(127, 0);
 #[map]
 static STACKS: Queue<[u64; 1]> = Queue::with_max_entries(1024, 0);
 
-#[uprobe(name="nginx_with_ebpf")]
+#[uprobe]
 pub fn nginx_with_ebpf(ctx: ProbeContext) -> u32 {
     match try_nginx_with_ebpf(ctx) {
         Ok(ret) => ret,

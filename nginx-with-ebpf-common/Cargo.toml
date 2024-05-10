@@ -1,5 +1,5 @@
 [package]
-name = "nginx_with_ebpf-common"
+name = "nginx-with-ebpf-common"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,7 +8,7 @@ default = []
 user = ["aya"]
 
 [dependencies]
-aya = { version = ">=0.11", optional = true }
+aya = { version = "0.12", optional = true }
 
 [lib]
 path = "src/lib.rs"

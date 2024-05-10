@@ -1,2 +1,2 @@
 [workspace]
-members = ["nginx_with_ebpf", "nginx_with_ebpf-common", "xtask"]
+members = ["xtask", "nginx-with-ebpf", "nginx-with-ebpf-common"]

@@ -1,16 +1,15 @@
 [package]
-name = "nginx_with_ebpf-ebpf"
+name = "nginx-with-ebpf-ebpf"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-aya-bpf = { git = "https://github.com/aya-rs/aya", branch = "main" }
-aya-log-ebpf = { git = "https://github.com/aya-rs/aya", branch = "main" }
-nginx_with_ebpf-common = { path = "../nginx_with_ebpf-common" }
-#proc-macro2 = "1.0.60"
+aya-ebpf = "0.1.0"
+aya-log-ebpf = "0.1.0"
+nginx-with-ebpf-common = { path = "../nginx-with-ebpf-common" }
 
 [[bin]]
-name = "nginx_with_ebpf"
+name = "nginx-with-ebpf"
 path = "src/main.rs"
 
 [profile.dev]
