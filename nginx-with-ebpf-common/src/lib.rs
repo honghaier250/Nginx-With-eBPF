@@ -30,7 +30,6 @@ pub struct Request {
     pub request_uri: [u8; 25],
     pub upstream_ip: u32,
     pub upstream_port: u16,
-    pub upstream_name: [u8; 25],
 }
 
 #[cfg(feature = "user")]
@@ -38,30 +37,3 @@ unsafe impl aya::Pod for Connection {}
 
 #[cfg(feature = "user")]
 unsafe impl aya::Pod for Request {}
-
-// #[cfg(feature = "user")]
-// mod common {
-//     use aya_ebpf_cty::c_char;
-
-//     pub(crate) fn u8_array_to_str<const N: usize>(array: [u8; N]) -> String {
-//         array
-//             .iter()
-//             .map(|&s| s as char)
-//             .collect::<String>()
-//             .split("\0")
-//             .nth(0)
-//             .unwrap_or("")
-//             .to_string()
-//     }
-
-//     pub(crate) fn c_char_array_to_str<const N: usize>(array: [c_char; N]) -> String {
-//         array
-//             .iter()
-//             .map(|&s| (s as u8) as char)
-//             .collect::<String>()
-//             .split("\0")
-//             .nth(0)
-//             .unwrap_or("")
-//             .to_string()
-//     }
-// }

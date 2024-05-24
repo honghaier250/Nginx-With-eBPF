@@ -5,10 +5,11 @@
 #[allow(non_snake_case)]
 #[allow(non_camel_case_types)]
 #[allow(dead_code)]
+#[allow(unused_imports)]
 mod bindings;
 mod maps;
 
-use aya_log_ebpf::{debug, info};
+use aya_log_ebpf::{debug};
 use core::cmp;
 use maps::LATENCY;
 use nginx_with_ebpf_common::Connection;
@@ -16,14 +17,12 @@ use nginx_with_ebpf_common::Request;
 
 use bindings::{
     ngx_connection_t, ngx_http_request_t, ngx_http_upstream_t, ngx_socket_t, sockaddr, sockaddr_in,
-    sockaddr_in6, NGX_AGAIN, NGX_HTTP_MODULE, NGX_OK,
+    sockaddr_in6, NGX_OK,
 };
 
 use aya_ebpf::{
-    bindings::BPF_F_USER_STACK,
     helpers::*,
-    macros::{map, uprobe, uretprobe},
-    maps::*,
+    macros::{uprobe, uretprobe},
     programs::ProbeContext,
 };
 
@@ -48,7 +47,7 @@ fn get_info_from_connection(
         let sa_family = bpf_probe_read_user(&(*sockaddr).sa_family)?;
 
         let mut src_ip: u32 = 0;
-        let mut src_port: u16 = 0;
+        let src_port: u16;
 
         if sa_family == 2 {
             let socket: sockaddr_in = bpf_probe_read_user(sockaddr as *const sockaddr_in)?;
@@ -59,23 +58,6 @@ fn get_info_from_connection(
             //dst_ip = ntohs(socket.sin6_addr[0]);
             src_port = ntohs(socket.sin6_port as u16);
         };
-
-        // let family =
-        // unsafe { ((bpf_probe_read_user(&*sockaddr)).map_err(|_e| 5i64)? as sockaddr).sa_family };
-        // First we need to get the family, then we can use it to cast the sockaddr to a more specific type
-        // Also, it helps filter out UDS and IPv6 connections.
-        // if family != AF_INET as sa_family_t {
-        //     return Ok(None);
-        // }
-        // let sock_in_addr: *const sockaddr_in = unsafe { core::mem::transmute(sockaddr) };
-        // let sock_in: sockaddr_in = unsafe { bpf_probe_read_user(sock_in_addr)? };
-        // let ip = u32::from_be(sock_in.sin_addr.s_addr);
-        // let port = u16::from_be(sock_in.sin_port);
-        // let local = 0x7f << 6 * 4 | 0xff; // 127.0.0.x
-        //                                   // skip 127.0.0.x (for example, 53 might be used for DNS)
-        // if ip & local == ip {
-        //     return Ok(None);
-        // }
 
         let start_time = bpf_probe_read_user(&(*connection).start_msec)?;
 
@@ -126,7 +108,6 @@ pub fn uprobe_ngx_http_init_connection(ctx: ProbeContext) -> u32 {
                 request_uri: [0; 25],
                 upstream_ip: 0,
                 upstream_port: 0,
-                upstream_name: [0; 25],
             };
 
             LATENCY
@@ -226,7 +207,6 @@ pub fn uretprobe_ngx_http_read_request_header(ctx: ProbeContext) -> u32 {
                     let len = cmp::min(uri.len as usize, buf.len());
                     bpf_probe_read_user_buf(uri.data as *const u8, &mut buf[..len])?;
                     request.request_uri = buf;
-                    let uri = core::str::from_utf8_unchecked(&request.request_uri);
                 }
 
                 LATENCY
@@ -376,7 +356,7 @@ pub fn uprobe_ngx_http_upstream_send_request_body(ctx: ProbeContext) -> u32 {
             let sa_family = bpf_probe_read_user(&(*sockaddr).sa_family)?;
 
             let mut upstream_ip: u32 = 0;
-            let mut upstream_port: u16 = 0;
+            let upstream_port: u16;
 
             if sa_family == 2 {
                 let socket: sockaddr_in = bpf_probe_read_user(sockaddr as *const sockaddr_in)?;

@@ -1,22 +1,15 @@
-mod ebpf;
-mod symbol;
-
-use aya::maps::{HashMap, MapData, Queue};
-use aya::programs::UProbe;
-use aya::{include_bytes_aligned, Bpf};
-use aya_log::BpfLogger;
-use bytes::BytesMut;
-use clap::Parser;
-use color_eyre::eyre::ContextCompat;
-use color_eyre::Result;
-use log::{debug, info, warn};
 #[allow(unused_imports)]
+mod ebpf;
+
+use aya::maps::{HashMap};
+use clap::Parser;
+use color_eyre::Result;
+use log::{info, warn};
 use nginx_with_ebpf_common::Connection;
 use nginx_with_ebpf_common::Request;
 use std::convert::TryFrom;
-use std::{net, str, thread, time};
-use symbol::Resolver;
-use tokio::{signal, task};
+use std::{net, str};
+use tokio::{signal};
 
 #[derive(Debug, Parser)]
 struct Opts {
