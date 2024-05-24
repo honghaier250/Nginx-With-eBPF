@@ -9,6 +9,7 @@ user = ["aya"]
 
 [dependencies]
 aya = { version = "0.12", optional = true }
+aya-ebpf-cty = "0.2.1"
 
 [lib]
 path = "src/lib.rs"

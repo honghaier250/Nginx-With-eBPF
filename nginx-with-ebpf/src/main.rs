@@ -1,94 +1,106 @@
+mod ebpf;
 mod symbol;
 
+use aya::maps::{HashMap, MapData, Queue};
 use aya::programs::UProbe;
 use aya::{include_bytes_aligned, Bpf};
 use aya_log::BpfLogger;
+use bytes::BytesMut;
 use clap::Parser;
-use log::{info, warn, debug};
-use tokio::signal;
-use aya::maps::{Queue,StackTraceMap};
-use std::{thread, time};
+use color_eyre::eyre::ContextCompat;
+use color_eyre::Result;
+use log::{debug, info, warn};
+#[allow(unused_imports)]
+use nginx_with_ebpf_common::Connection;
+use nginx_with_ebpf_common::Request;
+use std::convert::TryFrom;
+use std::{net, str, thread, time};
 use symbol::Resolver;
-
+use tokio::{signal, task};
 
 #[derive(Debug, Parser)]
-struct Opt {
-    #[clap(short, long, value_name = "pid", help = "nginx worker pid to uprobe", required = true)]
+struct Opts {
+    #[clap(
+        short,
+        long,
+        value_name = "pid",
+        help = "nginx worker pid to uprobe",
+        required = true
+    )]
     pid: Option<i32>,
-    #[clap(short, long, value_name = "uprobe", help = "http function to uprobe", required = true)]
-    uprobe: Option<String>,
 }
 
 #[tokio::main]
-async fn main() -> Result<(), anyhow::Error> {
-    let opt = Opt::parse();
+async fn main() -> Result<()> {
+    env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info")).init();
+    color_eyre::install()?;
 
-    env_logger::init();
+    let opt = Opts::parse();
 
-    // Bump the memlock rlimit. This is needed for older kernels that don't use the
-    // new memcg based accounting, see https://lwn.net/Articles/837122/
-    let rlim = libc::rlimit {
-        rlim_cur: libc::RLIM_INFINITY,
-        rlim_max: libc::RLIM_INFINITY,
-    };
-    let ret = unsafe { libc::setrlimit(libc::RLIMIT_MEMLOCK, &rlim) };
-    if ret != 0 {
-        debug!("remove limit on locked memory failed, ret is: {}", ret);
-    }
+    let mut bpf = ebpf::attach_bpf(&opt)?;
 
-    // This will include your eBPF object file as raw bytes at compile-time and load it at
-    // runtime. This approach is recommended for most real-world use cases. If you would
-    // like to specify the eBPF program at runtime rather than at compile-time, you can
-    // reach for `Bpf::load_file` instead.
-    #[cfg(debug_assertions)]
-    let mut bpf = Bpf::load(include_bytes_aligned!(
-        "../../target/bpfel-unknown-none/debug/nginx-with-ebpf"
-    ))?;
-    #[cfg(not(debug_assertions))]
-    let mut bpf = Bpf::load(include_bytes_aligned!(
-        "../../target/bpfel-unknown-none/release/nginx-with-ebpf"
-    ))?;
-    if let Err(e) = BpfLogger::init(&mut bpf) {
-        // This can happen if you remove all log statements from your eBPF program.
-        warn!("failed to initialize eBPF logger: {}", e);
-    }
+    tokio::task::spawn(async move {
+        loop {
+            let mut latency: HashMap<_, Connection, Request> =
+                HashMap::try_from(bpf.map_mut("LATENCY").unwrap()).unwrap();
 
-    let program: &mut UProbe = bpf.program_mut("nginx_with_ebpf").unwrap().try_into()?;
+            for entry in latency.iter() {
+                match entry {
+                    Ok((connection, request)) => {
+                        let client_ip = net::Ipv4Addr::from(connection.src_ip);
+                        let client_port = connection.src_port;
+                        let upstream_ip = net::Ipv4Addr::from(request.upstream_ip);
+                        let upstream_port = request.upstream_port;
+                        let request_uri = str::from_utf8(&request.request_uri).unwrap();
+                        let status = request.response_status;
+                        let request_size = request.request_size;
+                        let response_size = request.response_size;
+                        let accept_time = request.downstream_accept_time;
+                        let downstream_request_first_byte_time = request
+                            .downstream_request_first_byte_time
+                            - request.downstream_accept_time;
+                        let downstream_request_last_byte_time = request
+                            .downstream_request_last_byte_time
+                            - request.downstream_accept_time;
+                        let upstream_connect_time =
+                            request.upstream_connect_time - request.downstream_accept_time;
+                        let upstream_request_first_byte_time = request
+                            .upstream_request_first_byte_time
+                            - request.downstream_accept_time;
+                        let upstream_request_last_byte_time = request
+                            .upstream_request_last_byte_time
+                            - request.downstream_accept_time;
+                        let upstream_response_first_byte_time = request
+                            .upstream_response_first_byte_time
+                            - request.downstream_accept_time;
+                        let upstream_response_last_byte_time = request
+                            .upstream_response_last_byte_time
+                            - request.downstream_accept_time;
+                        let downstream_response_first_byte_time = request
+                            .downstream_response_first_byte_time
+                            - request.downstream_accept_time;
+                        let downstream_response_last_byte_time = request
+                            .downstream_response_last_byte_time
+                            - request.downstream_accept_time;
 
-    let pid = opt.pid.unwrap() as u32;
-    let path = format!("/proc/{}/exe", pid);
+                        info!("{}, {}:{}=>{}:{}, {}, {}, request_size={}, response_size={}, downstream_request_first_byte_time={}, downstream_request_last_byte_time={}, upstream_connect_time={}, upstream_request_first_byte_time={}, upstream_request_last_byte_time={}, upstream_response_first_byte_time={}, upstream_response_last_byte_time={}, downstream_response_first_byte_time={}, downstream_response_last_byte_time={}", accept_time, client_ip, client_port, upstream_ip, upstream_port, request_uri, status, request_size, response_size, downstream_request_first_byte_time, downstream_request_last_byte_time, upstream_connect_time, upstream_request_first_byte_time, upstream_request_last_byte_time, upstream_response_first_byte_time, upstream_response_last_byte_time, downstream_response_first_byte_time, downstream_response_last_byte_time);
+                    }
+                    Err(e) => warn!("Error: {}", e),
+                }
+            }
 
-    program.load()?;
-    program.attach(opt.uprobe.as_ref().map(String::as_ref), 0, path, opt.pid.try_into()?)?;
+            let connections = latency.keys().flatten().collect::<Vec<_>>();
+            for connection in connections {
+                let _ = latency.remove(&connection);
+            }
 
-    let mut stacks = Queue::<_, [u64; 1]>::try_from(bpf.map_mut("STACKS").expect("STACK map"))?;
+            tokio::time::sleep(std::time::Duration::from_millis(1000)).await;
+        }
+    });
 
     info!("Waiting for Ctrl-C...");
     signal::ctrl_c().await?;
     info!("Exiting...");
-
-    let symbol_resolver = Resolver::new();
-
-    match stacks.pop(0) {
-        Ok([utrace_id]) => {
-			let stack_traces = StackTraceMap::try_from(bpf.map("STACK_TRACES").expect("STACK_TRACES map"))?;
-            let user_stack = stack_traces.get(&(utrace_id as u32), 0)?;
-            let user_frames = symbol_resolver.resolve(
-                pid,
-                &user_stack
-                    .frames()
-                    .iter()
-                    .map(|f| f.ip as usize)
-                    .collect::<Vec<_>>(),
-            )?;
-            for (addr, symbol) in user_frames {
-                info!("stack {:#x} {}", addr, symbol.unwrap_or("[unknown symbol name]".to_string()));
-            }
-        }
-        Err(_) => {
-            thread::sleep(time::Duration::from_millis(1000));
-        }
-    }
 
     Ok(())
 }

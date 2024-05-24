@@ -30,7 +30,7 @@ sed -i -r 's/std::clone/core::clone/g' nginx-with-ebpf/nginx_with_ebpf-ebpf/src/
 sed -i -r 's/std::slice/core::slice/g' nginx-with-ebpf/nginx_with_ebpf-ebpf/src/bindings.rs
 sed -i -r 's/std::mem/core::mem/g' nginx-with-ebpf/nginx_with_ebpf-ebpf/src/bindings.rs
 sed -i -r 's/std::hash/core::hash/g' nginx-with-ebpf/nginx_with_ebpf-ebpf/src/bindings.rs
-sed -i -r 's/std::os::raw/aya_bpf::cty/g' nginx-with-ebpf/nginx_with_ebpf-ebpf/src/bindings.rs
+sed -i -r 's/std::os::raw/aya_ebpf::cty/g' nginx-with-ebpf/nginx_with_ebpf-ebpf/src/bindings.rs
 ```
 
 ## 构建
@@ -46,23 +46,10 @@ cargo build
 ## 运行
 
 ```shell
-RUST_LOG=info cargo xtask run -- --pid $(pgrep -f "nginx: worker") --uprobe ngx_http_read_request_header
+RUST_LOG=info cargo xtask run -- --pid $(pgrep -f "trpd: worker")
 
-[2024-01-17T06:39:18Z INFO  nginx_with_ebpf] Waiting for Ctrl-C...
-[2024-01-17T06:39:21Z INFO  nginx_with_ebpf] uprobe function called for request: GET /1kb.html HTTP/1.1
-^C[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] Received Ctrl-C
-
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc13e1524 ngx_http_read_request_header@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc13deef8 ngx_http_wait_request_handler@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc13b1df8 ngx_epoll_process_events@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc139d8ff ngx_process_events_and_timers@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc13aeef9 ngx_worker_process_cycle@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc13ab06d ngx_spawn_process@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc13ada3f ngx_start_worker_processes@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc13ace82 ngx_master_process_cycle@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x555fc13659d4 main@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] stack 0x7f80c36266ca __libc_init_first@:0
-[2024-01-17T06:39:24Z INFO  nginx_with_ebpf] Exiting...
+[2024-05-22T07:48:36Z INFO  nginx_with_ebpf] Waiting for Ctrl-C...
+[2024-05-22T07:48:41Z INFO  nginx_with_ebpf] 4751821449717830,10.0.209.200:57281=>10.0.229.81:80, /1kb.html, 404, request_size=83, response_size=375, downstream_request_first_byte_time=6567704, downstream_request_last_byte_time=6585816, upstream_connect_time=6800342, upstream_request_first_byte_time=7116383, upstream_request_last_byte_time=7116383, upstream_response_first_byte_time=7713408, upstream_response_last_byte_time=7901449, downstream_response_first_byte_time=7754475, downstream_response_last_byte_time=8064774
 ```
 
 ## 拓展
