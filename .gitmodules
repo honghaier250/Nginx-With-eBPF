@@ -1,3 +1,6 @@
 [submodule "nginx"]
 	path = nginx
 	url = https://github.com/nginx/nginx.git
+[submodule "bpftrace"]
+	path = bpftrace
+	url = https://github.com/bpftrace/bpftrace.git
