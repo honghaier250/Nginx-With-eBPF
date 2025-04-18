@@ -53,3 +53,5 @@ Mkfile.old
 dkms.conf
 private.md
 nginx_bpftrace.patch
+.vim
+.vscode
