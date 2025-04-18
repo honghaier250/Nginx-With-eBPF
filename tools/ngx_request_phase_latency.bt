@@ -1,0 +1,39 @@
+#!/usr/bin/env bpftrace
+
+#include <ngx_config.h>
+#include <ngx_core.h>
+#include <ngx_http.h>
+
+//下游请求开始
+uprobe:/opt/nginx/sbin/nginx:ngx_http_process_request
+{
+    @start[pid] = nsecs;
+
+    $r = (struct ngx_http_request_s *) arg0;
+
+    printf("\n%s(%d): %s, ", comm, pid, str($r->uri.data, $r->uri.len+1));
+}
+
+//下游请求完成
+uretprobe:/opt/nginx/sbin/nginx:ngx_http_finalize_request
+/@start[pid]/
+{
+    $latency = nsecs - @start[pid];
+    printf("下游请求处理时间: %d ns, ", $latency);
+    delete(@start[pid]);
+}
+
+//上游请求开始
+uprobe:/opt/nginx/sbin/nginx:ngx_http_upstream_send_request
+{
+    @upstream_start[pid] = nsecs;
+}
+
+//上游请求完成
+uretprobe:/opt/nginx/sbin/nginx:ngx_http_upstream_send_request
+/@upstream_start[pid]/
+{
+    $latency = nsecs - @upstream_start[pid];
+    printf("上游请求处理时间: %d ns", $latency);
+    delete(@upstream_start[pid]);
+}

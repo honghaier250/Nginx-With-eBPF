@@ -1,0 +1,19 @@
+#!/usr/bin/env bpftrace
+
+#include <ngx_config.h>
+#include <ngx_core.h>
+#include <ngx_event.h>
+#include <ngx_event_openssl.h>
+
+//追踪探测局部变量实例演示: 统计ssl session尺寸
+uprobe:/opt/nginx/sbin/nginx:ngx_ssl_new_session+712
+{
+    $sess_id = *(struct ngx_ssl_sess_id_s **)(reg("bp")-32);
+
+    $id_len = $sess_id->len;
+    $session_len = (uint8)$sess_id->node.data;
+    $meta_len = sizeof(struct ngx_ssl_sess_id_s);
+
+    $total_len = $id_len + $session_len + $meta_len;
+    printf("one session size: %d = %d + %d + %d \n", $total_len, $id_len, $session_len, $meta_len);
+}

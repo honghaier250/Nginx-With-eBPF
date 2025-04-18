@@ -1,0 +1,249 @@
+#!/usr/bin/env bpftrace
+
+/**
+ *  args: $1=NGINX_WORKER_PID
+ */
+
+#include <linux/sched.h>
+#include <linux/wait.h>
+#include <linux/fs.h>
+#include <linux/net.h>
+#include <linux/socket.h>
+#include <net/sock.h>
+
+struct ngx_connection_t {
+    void        *data;
+    void        *read;
+    void        *write;
+    int          fd;
+};
+
+struct epoll_filefd {
+	struct file *file;
+	int fd;
+};
+
+struct epitem {
+	union {
+		// RB tree node links this structure to the eventpoll RB tree
+		struct rb_node rbn;
+		// Used to free the struct epitem
+		struct rcu_head rcu;
+	};
+
+	// List header used to link this structure to the eventpoll ready list
+	struct list_head rdllink;
+
+	/*
+	 * Works together "struct eventpoll"->ovflist in keeping the
+	 * single linked chain of items.
+	 */
+	struct epitem *next;
+
+	// The file descriptor information this item refers to
+	struct epoll_filefd ffd;
+
+	// Number of active wait queue attached to poll operations
+	int nwait;
+
+	// List containing poll wait queues
+	struct list_head pwqlist;
+
+	// The "container" of this item
+	struct eventpoll *ep;
+
+	// List header used to link this item to the "struct file" items list
+	// struct list_head fllink;
+
+	// wakeup_source used when EPOLLWAKEUP is set
+	// struct wakeup_source __rcu *ws;
+
+	// The structure that describe the interested events and the source fd
+	// struct epoll_event event;
+};
+
+
+struct eppoll_entry {
+	// List header used to link this structure to the "struct epitem"
+	struct list_head llink;
+
+	// The "base" pointer is set to the container "struct epitem"
+	struct epitem *base;
+
+	/*
+	 * Wait queue item that will be linked to the target file wait
+	 * queue head.
+	 */
+	struct wait_queue_entry wait;
+
+	// The wait queue head that linked the "wait" wait queue item
+	// wait_queue_head_t *whead;
+};
+
+
+BEGIN
+{
+    printf("tracing nginx epoll event...ctrl-c to end\n");
+
+	@tcp_states[1] = "ESTABLISHED";
+	@tcp_states[2] = "SYN_SENT";
+	@tcp_states[3] = "SYN_RECV";
+	@tcp_states[4] = "FIN_WAIT1";
+	@tcp_states[5] = "FIN_WAIT2";
+	@tcp_states[6] = "TIME_WAIT";
+	@tcp_states[7] = "CLOSE";
+	@tcp_states[8] = "CLOSE_WAIT";
+	@tcp_states[9] = "LAST_ACK";
+	@tcp_states[10] = "LISTEN";
+	@tcp_states[11] = "CLOSING";
+	@tcp_states[12] = "NEW_SYN_RECV";
+    @tcp_states[13] = "BOUND_INACTIVE"; 
+}
+
+kprobe:ep_poll_callback
+{
+    $wq_entry = (struct wait_queue_entry *)arg0;
+    $eppoll_entry = (struct eppoll_entry *) ( (uint64)$wq_entry-8-sizeof(struct list_head) );
+    $base_epitem = $eppoll_entry->base;
+    $file = $base_epitem->ffd.file;
+    $fd = $base_epitem->ffd.fd;
+    $ep = ($base_epitem->ep);
+    $socket_file_ops = kaddr("socket_file_ops");
+    
+    if ($file->f_op != $socket_file_ops) {
+        //ignore non-socket file
+        return;
+    }
+
+    $private_data = $file->private_data;
+    if ( ((uint64)$private_data ) == 0 ) {
+        //ignore invalid socket
+        return;
+    }
+
+    $socket = (struct socket*) $private_data;
+    $sk = (struct sock *) $socket->sk;
+
+	$inet_family = $sk->__sk_common.skc_family;
+    if ($inet_family != AF_INET) {
+        return;
+    }
+
+    $daddr = ntop(0);
+    $saddr = ntop(0);
+    $daddr = ntop($sk->__sk_common.skc_daddr);
+    $saddr = ntop($sk->__sk_common.skc_rcv_saddr);
+    $lport = $sk->__sk_common.skc_num;
+    $dport = $sk->__sk_common.skc_dport;
+    $tcp_state = $sk->__sk_common.skc_state;
+
+    //$dport = $sk->__sk_common.skc_dport;
+    // Destination port is big endian, it must be flipped
+    $dport = (uint16)(($dport >> 8) | (($dport << 8) & 0x00FF00));
+
+    @scope_ep_poll_callback[tid]=($fd,$saddr,$lport,$daddr,$dport,$tcp_state,$sk);
+}
+
+kprobe:try_to_wake_up
+/@scope_ep_poll_callback[tid].0/
+{
+    $taskToWakeuped = (struct task_struct *)arg0;
+
+    if ($taskToWakeuped->tgid == $1) {
+
+        $s = @scope_ep_poll_callback[tid];
+
+        printf("\nwaker: elapsed=%-10u tid=%d, comm=%s: ep_poll_callback: fd=%d, %14s:%-6d %14s:%-6d %6s socket=%p\n",
+            elapsed / 1000000, tid, comm, 
+            $s.0, $s.1, $s.2, $s.3, $s.4, @tcp_states[$s.5], $s.6);    
+
+        printf("try_to_wake_up: wakeupedPID=%d, wakeupedTID=%d, wakeupedTIDComm=%s\n", 
+            $taskToWakeuped->tgid, $taskToWakeuped->pid, $taskToWakeuped->comm);    
+    }
+}
+
+kretprobe:ep_poll_callback
+{
+    delete(@scope_ep_poll_callback[tid]);
+}
+
+tracepoint:syscalls:sys_exit_epoll_wait
+{
+    if (pid != $1) {
+        return;
+    }
+
+    if (args->ret <= 0) {
+        return;
+    }
+
+    printf("\nexit_epoll_wait: elapsed=%-10u, pid=%d, tid=%d, comm=%s, event_count=%d\n",
+        elapsed / 1000000, pid, tid, comm, args->ret);
+}
+
+kretprobe:inet_csk_accept
+{
+    if (pid != $1) {
+        return;
+    }
+
+    $sk = (struct sock *)retval;
+    $inet_family = $sk->__sk_common.skc_family;
+
+    if ($inet_family == AF_INET) {
+
+        $daddr = ntop(0);
+        $saddr = ntop(0);
+        $daddr = ntop($sk->__sk_common.skc_daddr);
+        $saddr = ntop($sk->__sk_common.skc_rcv_saddr);
+
+        $lport = $sk->__sk_common.skc_num;
+
+        $dport = $sk->__sk_common.skc_dport;
+        $qlen  = $sk->sk_ack_backlog;
+        $qmax  = $sk->sk_max_ack_backlog;
+
+        // Destination port is big endian, it must be flipped
+        $dport = (uint16)(($dport >> 8) | (($dport << 8) & 0x00FF00));
+
+        printf("inet_csk_accept: %-39s %-5d %-39s %-5d ", $daddr, $dport, $saddr, $lport);
+    }
+}
+
+tracepoint:syscalls:sys_exit_accept4
+{
+    if (pid != $1) {
+        return;
+    }
+
+    $fd = args->ret;
+    if ($fd < 0) {
+        return;
+    }
+
+    printf("\nsys_exit_accept4 fd=%d\n", $fd);
+}
+
+uprobe:/opt/nginx/sbin/nginx:ngx_event_accept+207
+{
+    if (pid != $1) {
+        return;
+    }
+
+
+}
+
+tracepoint:syscalls:sys_enter_close
+{
+    if (pid != $1) {
+        return;
+    }
+
+    $fd = args->fd;
+    printf("connection close: fd=%d\n", $fd);
+}
+
+END
+{
+    clear(@tcp_states);
+}

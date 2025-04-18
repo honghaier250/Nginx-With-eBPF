@@ -1,0 +1,18 @@
+#!/usr/bin/env bpftrace
+
+#include <ngx_config.h>
+#include <ngx_core.h>
+#include <ngx_event.h>
+#include <ngx_event_openssl.h>
+
+//追踪探测全局变量实例演示：探测ngx_accept_mutex锁在nginx worker间的持有情况
+uprobe:/opt/nginx/sbin/nginx:ngx_trylock_accept_mutex
+{
+    $base = (uint64)0x562bc6c45000;
+    $ngx_accept_disabled_offset = (uint32)uaddr("ngx_accept_disabled");
+    $ngx_accept_mutex_held_offset = (uint32)uaddr("ngx_accept_mutex_held");
+    $ngx_accept_disabled = *(int64*)($base + $ngx_accept_disabled_offset);
+    $ngx_accept_mutex_held = *(uint64*)($base + $ngx_accept_mutex_held_offset);
+
+    printf("%s(%d), %ld, %d\n", comm, pid, $ngx_accept_disabled, $ngx_accept_mutex_held);
+}

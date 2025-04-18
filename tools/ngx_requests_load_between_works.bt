@@ -1,0 +1,16 @@
+BEGIN
+{
+    printf("probe request load between nginx workers... hit ctrl-c to end.\n");
+}
+
+//追踪探测实例演示：探测请求在nginx worker间的负载情况
+uprobe:/opt/nginx/sbin/nginx:ngx_http_create_request
+{
+    @distribution[pid] = count();
+}
+
+END
+{
+    print(@distribution);
+    clear(@distribution);
+}

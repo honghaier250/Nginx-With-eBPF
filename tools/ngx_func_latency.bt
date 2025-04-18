@@ -1,0 +1,18 @@
+#!/usr/bin/env bpftrace
+
+BEGIN
+{
+    printf("probe nginx %s latency... hit ctrl-c to end.\n", str($1)); 
+}
+
+//追踪探测函数出口实例演示：统计函数处理时延
+uprobe:/opt/nginx/sbin/nginx:$1
+{
+    @start[pid] = nsecs; 
+}
+
+uretprobe:/opt/nginx/sbin/nginx:$1 /@start[pid]/
+{
+    @latency[(comm,pid,str($1))] = lhist(nsecs - @start[tid], 0, 1000000, 50000);
+    delete(@start, pid);
+}

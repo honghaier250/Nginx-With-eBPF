@@ -1,0 +1,14 @@
+#!/usr/bin/env bpftrace
+
+#include <ngx_config.h>
+#include <ngx_core.h>
+#include <ngx_http.h>
+
+//追踪探测函数入口实例演示：追踪解析请求
+uprobe:/opt/nginx/sbin/nginx:ngx_http_process_request
+{
+    $r = (struct ngx_http_request_s *) arg0;
+
+    printf("%d\n", offsetof(struct ngx_http_request_s, uri));
+    printf("%s(%d): %s\n", comm, pid, str($r->uri.data, $r->uri.len+1));
+}

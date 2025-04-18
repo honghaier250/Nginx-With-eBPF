@@ -1,0 +1,12 @@
+//sudo bpftrace -I ../nginx/objs -I . ngx_http_handler.bt
+
+#include <ngx_ebpf_with_mock_struct.h>
+
+//传统方式追踪探测实例演示：追踪解析请求
+uprobe:/opt/nginx/sbin/nginx:ngx_http_process_request
+{
+    $r = (struct ngx_http_request_s *) arg0;
+
+    //printf("uri offset of request: %d\n", offsetof(struct ngx_http_request_s, uri));
+    printf("%s(%d): %s\n", comm, pid, str($r->uri.data, $r->uri.len+1));
+}
